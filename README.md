@@ -1,8 +1,4 @@
 
-Here’s a clean, descriptive **README.md** draft for your program:
-
----
-
 # CVE Updater
 
 This tool synchronizes a local PostgreSQL database with the latest CVE (Common Vulnerabilities and Exposures) data from the [NIST NVD](https://nvd.nist.gov/).
