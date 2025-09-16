@@ -53,5 +53,5 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
-          name: binaries-${{ matrix.goos }}-${{ matrix.arch_name }}
+          name: ${{ matrix.goos }}-${{ matrix.arch_name }}
           path: "*.tar.gz"
