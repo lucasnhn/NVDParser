@@ -1,11 +1,10 @@
-# .github/workflows/release.yml
 name: Release All Tar.gz
 
 on:
-  # You can still run manually, but publish happens only on tags.
   workflow_dispatch:
   push:
-    tags: ['v*']  # e.g. v0.1.1
+    tags:
+      - 'v*'
 
 jobs:
   build:
@@ -20,7 +19,6 @@ jobs:
           - { goos: darwin,  goarch: arm64, arch_name: aarch64 }
           - { goos: windows, goarch: amd64, arch_name: x86_64 }
           - { goos: windows, goarch: arm64, arch_name: aarch64 }
-
     steps:
       - uses: actions/checkout@v4
 
@@ -28,95 +26,21 @@ jobs:
         with:
           go-version: "1.25"
 
-      # Derive VERSION from the tag when present; keep it in env for later steps
-      - name: Compute version
-        run: |
-          if [[ "${{ github.ref_type }}" == "tag" ]]; then
-            # e.g., github.ref_name=v0.1.1 -> VERSION=0.1.1
-            VERSION="${{ github.ref_name#v }}"
-          else
-            # For manual runs not on a tag, fall back to short SHA (won't publish)
-            VERSION="${GITHUB_SHA::7}"
-          fi
-          echo "VERSION=$VERSION" >> "$GITHUB_ENV"
-
       - name: Build and package
         run: |
-          set -euo pipefail
+          VERSION=$(echo "${GITHUB_REF#refs/tags/v}")
           NAME=nvdParser
+          OUTNAME="${NAME}-${VERSION}-${{ matrix.goos }}-${{ matrix.arch_name }}"
           BIN="$NAME"
-          [[ "${{ matrix.goos }}" == "windows" ]] && BIN="$NAME.exe"
+          if [[ "${{ matrix.goos }}" == "windows" ]]; then
+            BIN="$NAME.exe"
+          fi
+          GOOS=${{ matrix.goos }} GOARCH=${{ matrix.goarch }} go build -o $BIN .
+          tar -czf "${OUTNAME}.tar.gz" $BIN
+          rm $BIN
 
-          mkdir -p dist
-          GOOS=${{ matrix.goos }} GOARCH=${{ matrix.goarch }} go build -o "$BIN" .
-
-          OUTFILE="dist/${NAME}-${VERSION}-${{ matrix.goos }}-${{ matrix.arch_name }}.tar.gz"
-          tar -czf "$OUTFILE" "$BIN"
-          rm -f "$BIN"
-
-          echo "Created: $OUTFILE"
-          ls -l dist
-
-      # Upload each tarball as its own artifact (unique name per matrix)
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
           name: ${{ matrix.goos }}-${{ matrix.arch_name }}
-          path: dist/nvdParser-${{ env.VERSION }}-${{ matrix.goos }}-${{ matrix.arch_name }}.tar.gz
-
-  publish:
-    # Only publish when the run is on a tag (vX.Y.Z)
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - name: Download all build artifacts
-        uses: actions/download-artifact@v4
-        with:
-          # Grab every artifact produced by the matrix and merge into ./dist
-          path: dist
-          pattern: '*'
-          merge-multiple: true
-
-      - name: Compute checksums and compose release body
-        run: |
-          set -euo pipefail
-          cd dist
-          echo "Contents of dist:"
-          ls -l
-
-          # Compute checksums for all tarballs
-          sha256sum *.tar.gz > SHA256SUMS.txt
-          sha512sum *.tar.gz > SHA512SUMS.txt
-
-          # Create a rich release body with collapsible checksum sections
-          cat > ../RELEASE_BODY.md <<EOF
-          ## Downloads
-          All tarballs are attached below.
-          <details><summary>SHA-256 checksums</summary>
-
-          \`\`\`text
-          $(cat SHA256SUMS.txt)
-          \`\`\`
-
-          </details>
-
-          <details><summary>SHA-512 checksums</summary>
-          
-          \`\`\`text
-          $(cat SHA512SUMS.txt)
-          \`\`\`
-          
-          </details>
-          EOF
-          cd -
-
-      - name: Publish GitHub Release (attach all tarballs)
-        uses: softprops/action-gh-release@v2
-        with:
-          tag_name: ${{ github.ref_name }}                   # e.g. v0.1.1
-          name: "nvdParser ${{ github.ref_name }}"                 # title includes version
-          body_path: RELEASE_BODY.md
-          files: |
-            dist/*.tar.gz
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          path: "*.tar.gz"
