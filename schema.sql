@@ -152,6 +152,16 @@ CREATE UNIQUE INDEX IF NOT EXISTS uq_cvss_v20_cve_src_type_vec_ver
   ON cvss_v20 (cve_id, source, type, vector_string, version);
 CREATE INDEX IF NOT EXISTS idx_cvss_v20_score ON cvss_v20 (base_score);
 
+
+
+CREATE TABLE IF NOT EXISTS cve_configuration (
+  id         bigserial PRIMARY KEY,
+  cve_id     text NOT NULL REFERENCES cve(cve_id) ON DELETE CASCADE,
+  data       JSONB NOT NULL
+);
+CREATE INDEX IF NOT EXISTS idx_cve_configuration_cve ON cve_configuration (cve_id);
+
+
 CREATE OR REPLACE VIEW cve_best_cvss_full AS
 SELECT
   -- ===== CVE fields =====

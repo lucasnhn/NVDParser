@@ -34,6 +34,7 @@ func main() {
 	runStatus(ctx, status)
 
 	pool := getDatabasePool(ctx, password, username)
+	defer pool.Close()
 
 	runUpdateAll(ctx, updateAll, pool)
 
@@ -63,7 +64,6 @@ func getDatabasePool(ctx context.Context, password *string, username *string) *p
 	if err != nil {
 		log.Fatalf("init conn: %v\n", err)
 	}
-	defer pool.Close()
 	return pool
 }
 

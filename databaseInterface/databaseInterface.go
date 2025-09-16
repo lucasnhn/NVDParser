@@ -2,6 +2,7 @@ package databaseInterface
 
 import (
 	"context"
+	"encoding/json"
 	"fmt"
 	"nvd_parser/cve"
 	"os"
@@ -59,16 +60,6 @@ func InitiateConnectionPGX(ctx context.Context) (*pgxpool.Pool, error) {
 		return nil, fmt.Errorf("ping db: %w", err)
 	}
 	return pool, nil
-}
-
-// ---------- 1) Common row builder ----------
-type copyRows struct {
-	cveRows [][]any
-	v40Rows [][]any
-	v31Rows [][]any
-	v20Rows [][]any
-	refRows [][]any
-	ids     []string
 }
 
 const preferredSource = "nvd@nist.gov"
@@ -235,7 +226,17 @@ func UpdateCVES(ctx context.Context, pool *pgxpool.Pool, cves *[]cve.CVE) error 
 	return nil
 }
 
-// buildCopyRows: prepares COPY rows + the id list to delete (for replace).
+type copyRows struct {
+	cveRows [][]any
+	v40Rows [][]any
+	v31Rows [][]any
+	v20Rows [][]any
+	refRows [][]any
+	cfgRows [][]any
+	ids     []string
+}
+
+// buildCopyRows assembles COPY rows for cve, metrics, references, and configuration JSONB.
 func buildCopyRows(cves []cve.CVE) copyRows {
 	var cr copyRows
 	seenRef := make(map[string]struct{}) // dedupe (cve_id,url)
@@ -249,6 +250,7 @@ func buildCopyRows(cves []cve.CVE) copyRows {
 		}
 		cr.ids = append(cr.ids, v.ID)
 
+		// ---- cve core ----
 		desc := pickDescription(v.Descriptions)
 		cr.cveRows = append(cr.cveRows, []any{
 			v.ID,
@@ -260,7 +262,16 @@ func buildCopyRows(cves []cve.CVE) copyRows {
 			nilIfEmpty(v.VulnStatus),
 		})
 
-		// references (optional; tags left NULL)
+		// ---- configuration JSONB (entire configurations array) ----
+		for _, cfg := range v.Configurations {
+			b, _ := json.Marshal(cfg) // each top-level configuration object
+			cr.cfgRows = append(cr.cfgRows, []any{
+				v.ID,
+				b,
+			})
+		}
+
+		// ---- references (optional) ----
 		for _, r := range v.References {
 			u := strings.TrimSpace(r.URL)
 			if u == "" {
@@ -274,7 +285,7 @@ func buildCopyRows(cves []cve.CVE) copyRows {
 			cr.refRows = append(cr.refRows, []any{v.ID, u, nilIfEmpty(r.Source), nil})
 		}
 
-		// one preferred metric per version
+		// ---- one preferred metric per version ----
 		if m := pickPreferredV40(v.Metrics.CvssMetricV40); m != nil {
 			d := m.CvssData
 			cr.v40Rows = append(cr.v40Rows, []any{
@@ -323,17 +334,23 @@ func buildCopyRows(cves []cve.CVE) copyRows {
 }
 
 /* =========================
-   Replace (delete + insert)
+   Common inserter (USED BY BOTH add & replace)
    ========================= */
 
-// replaceCVEsCopy deletes those CVEs (cascades metrics/references) then re-inserts fresh rows.
-// ---------- 2) Common inserter used by both add & replace ----------
 func insertBundleTx(ctx context.Context, tx pgx.Tx, cr copyRows) error {
 	// cve
 	if len(cr.cveRows) > 0 {
 		if _, err := tx.CopyFrom(ctx, pgx.Identifier{"cve"},
 			[]string{"cve_id", "title", "description", "published", "last_modified", "source_identifier", "vuln_status"},
 			pgx.CopyFromRows(cr.cveRows)); err != nil {
+			return err
+		}
+	}
+	// configuration JSONB
+	if len(cr.cfgRows) > 0 {
+		if _, err := tx.CopyFrom(ctx, pgx.Identifier{"cve_configuration"},
+			[]string{"cve_id", "data"},
+			pgx.CopyFromRows(cr.cfgRows)); err != nil {
 			return err
 		}
 	}
@@ -401,7 +418,10 @@ func insertBundleTx(ctx context.Context, tx pgx.Tx, cr copyRows) error {
 	return nil
 }
 
-// ---------- 3) Add: tx + insert ----------
+/* =========================
+   Add & Replace
+   ========================= */
+
 func addCVEsCopy(ctx context.Context, pool *pgxpool.Pool, cves []cve.CVE) error {
 	cr := buildCopyRows(cves)
 	return pgx.BeginFunc(ctx, pool, func(tx pgx.Tx) error {
@@ -409,7 +429,6 @@ func addCVEsCopy(ctx context.Context, pool *pgxpool.Pool, cves []cve.CVE) error 
 	})
 }
 
-// ---------- 4) Replace: tx + delete + insert ----------
 func replaceCVEsCopy(ctx context.Context, pool *pgxpool.Pool, cves []cve.CVE) error {
 	cr := buildCopyRows(cves)
 	return pgx.BeginFunc(ctx, pool, func(tx pgx.Tx) error {
@@ -421,6 +440,7 @@ func replaceCVEsCopy(ctx context.Context, pool *pgxpool.Pool, cves []cve.CVE) er
 		return insertBundleTx(ctx, tx, cr)
 	})
 }
+
 func pickDescription(list []cve.LangValue) string {
 	var first string
 	for _, d := range list {
