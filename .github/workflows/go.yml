@@ -1,0 +1,56 @@
+name: Release All Tar.gz
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        include:
+          - goos: linux
+            goarch: amd64
+            arch_name: x86_64
+          - goos: linux
+            goarch: arm64
+            arch_name: aarch64
+          - goos: darwin
+            goarch: amd64
+            arch_name: x86_64
+          - goos: darwin
+            goarch: arm64
+            arch_name: aarch64
+          - goos: windows
+            goarch: amd64
+            arch_name: x86_64
+          - goos: windows
+            goarch: arm64
+            arch_name: aarch64
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-go@v5
+        with:
+          go-version: "1.25"
+
+      - name: Build and package
+        run: |
+          VERSION=$(echo "${GITHUB_REF#refs/tags/v}")
+          NAME=nvd
+          OUTNAME="${NAME}-${VERSION}-${{ matrix.goos }}-${{ matrix.arch_name }}"
+          BIN="$NAME"
+          if [[ "${{ matrix.goos }}" == "windows" ]]; then
+            BIN="$NAME.exe"
+          fi
+          GOOS=${{ matrix.goos }} GOARCH=${{ matrix.goarch }} go build -o $BIN .
+          tar -czf "${OUTNAME}.tar.gz" $BIN
+          rm $BIN
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: binaries
+          path: "*.tar.gz"
