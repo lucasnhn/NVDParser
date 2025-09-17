@@ -75,6 +75,5 @@ jobs:
       - name: update release body
         uses: ncipollo/release-action@v1
         with:
-          tag: $(echo "${GITHUB_REF#refs/tags/v}")
           bodyFile: release-notes.md
           allowUpdates: true
