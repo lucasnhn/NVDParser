@@ -12,12 +12,12 @@ jobs:
     strategy:
       matrix:
         include:
-          - { goos: linux,   goarch: amd64, arch_name: x86_64 }
+          - { goos: linux,   goarch: amd64, arch_name: amd64 }
           - { goos: linux,   goarch: arm64, arch_name: aarch64 }
           - { goos: linux,   goarch: riscv64, arch_name: riscv64 }
-          - { goos: darwin,  goarch: amd64, arch_name: x86_64 }
+          - { goos: darwin,  goarch: amd64, arch_name: amd64 }
           - { goos: darwin,  goarch: arm64, arch_name: aarch64 }
-          - { goos: windows, goarch: amd64, arch_name: x86_64 }
+          - { goos: windows, goarch: amd64, arch_name: amd64 }
           - { goos: windows, goarch: arm64, arch_name: aarch64 }
     steps:
       - uses: actions/checkout@v4
