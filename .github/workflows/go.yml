@@ -28,14 +28,13 @@ jobs:
 
       - name: Build and package
         run: |
-          VERSION=$(echo "${GITHUB_REF#refs/tags/v}")
           NAME=nvdParser
-          OUTNAME="${NAME}-${VERSION}-${{ matrix.goos }}-${{ matrix.arch_name }}"
+          OUTNAME="${NAME}-${{ matrix.goos }}-${{ matrix.arch_name }}"
           BIN="$NAME"
           if [[ "${{ matrix.goos }}" == "windows" ]]; then
             BIN="$NAME.exe"
           fi
-          GOOS=${{ matrix.goos }} GOARCH=${{ matrix.goarch }} go build -o $BIN .
+          GOOS=${{ matrix.goos }} GOARCH=${{ matrix.goarch }} go get . && go build -o $BIN .
           tar -czf "${OUTNAME}.tar.gz" $BIN
           rm $BIN
 
@@ -44,3 +43,54 @@ jobs:
         with:
           name: ${{ matrix.goos }}-${{ matrix.arch_name }}
           path: "*.tar.gz"
+  release:
+    if: github.event_name == 'push' && github.ref == 'refs/heads/master' && github.repository == 'fastfetch-cli/fastfetch'
+    name: Release
+    runs-on: ubuntu-latest
+    needs: [build]
+    permissions:
+      contents: write
+    steps:
+      - name: get latest release version
+        id: get_version_release
+        uses: pozetroninc/github-action-get-latest-release@master
+        with:
+          repository: ${{ github.repository }}
+
+      - name: download artifacts
+        uses: actions/download-artifact@v5
+        with:
+          path: ./
+
+      - name: create release
+        uses: ncipollo/release-action@v1
+        with:
+          tag: $(echo "${GITHUB_REF#refs/tags/v}")
+          commit: ${{ github.sha }}
+          artifactErrorsFailBuild: true
+          artifacts: ./**/*.tar.gz
+          body: "Release for NVD Parser"
+
+      - name: download source tarballs
+        if: needs.build.outputs.ffversion != steps.get_version_release.outputs.release
+        run: |
+          for i in 1 2 3 4 5; do curl -L --remote-name-all --output-dir nvdParser --create-dirs https://github.com/${{ github.repository }}/archive/refs/tags/$(echo "${GITHUB_REF#refs/tags/v}").{tar.gz} && break || sleep 5; done
+          ls **/.tar.gz*
+
+      - name: generate release notes
+        run: |
+          echo "Please refer to [CHANGELOG.md](https://github.com/${{ github.repository }}/blob/$(echo "${GITHUB_REF#refs/tags/v}")/CHANGELOG.md) for details." > release-notes.md
+          echo -e "\n---\n\n<details><summary>SHA256SUMs</summary><br>\n\n\`\`\`" >> release-notes.md
+          sha256sum **/* >> release-notes.md
+          echo -e "\`\`\`\n</details>" >> release-notes.md
+          echo -e "\n<details><summary>SHA512SUMs</summary><br>\n\n\`\`\`" >> release-notes.md
+          sha512sum **/* >> release-notes.md
+          echo -e "\`\`\`\n</details>" >> release-notes.md
+
+      - name: update release body
+        uses: ncipollo/release-action@v1
+        with:
+          tag: $(echo "${GITHUB_REF#refs/tags/v}")
+          commit: ${{ github.sha }}
+          bodyFile: release-notes.md
+          allowUpdates: true
