@@ -64,7 +64,7 @@ jobs:
 
       - name: generate release notes
         run: |
-          echo "Please refer to [CHANGELOG.md](https://github.com/${{ github.repository }}/blob/$(echo "${GITHUB_REF#refs/tags/v}")/CHANGELOG.md) for details." > release-notes.md
+          echo "NVD 2.0 JSON feed parser release" > release-notes.md
           echo -e "\n---\n\n<details><summary>SHA256SUMs</summary><br>\n\n\`\`\`" >> release-notes.md
           sha256sum **/* >> release-notes.md
           echo -e "\`\`\`\n</details>" >> release-notes.md
