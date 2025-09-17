@@ -60,11 +60,7 @@ jobs:
           artifactErrorsFailBuild: true
           artifacts: ./**/*.tar.gz
           body: "Release for NVD Parser"
-
-      - name: download source tarballs
-        run: |
-          for i in 1 2 3 4 5; do curl -L --remote-name-all --output-dir nvdParser --create-dirs https://github.com/${{ github.repository }}/archive/refs/tags/${{ github.ref_name }}.{tar.gz} && break || sleep 5; done
-          ls **/.tar.gz*
+          # generateReleaseNotes: true
 
       - name: generate release notes
         run: |
