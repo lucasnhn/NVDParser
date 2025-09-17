@@ -53,13 +53,10 @@ jobs:
     steps:
       - name: download artifacts
         uses: actions/download-artifact@v5
-        with:
-          path: ./
 
       - name: create release
         uses: ncipollo/release-action@v1
         with:
-          tag: ${{ github.ref_name }}
           commit: ${{ github.sha }}
           artifactErrorsFailBuild: true
           artifacts: ./**/*.tar.gz
