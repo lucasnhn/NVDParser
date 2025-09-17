@@ -76,6 +76,5 @@ jobs:
         uses: ncipollo/release-action@v1
         with:
           tag: $(echo "${GITHUB_REF#refs/tags/v}")
-          commit: ${{ github.sha }}
           bodyFile: release-notes.md
           allowUpdates: true
