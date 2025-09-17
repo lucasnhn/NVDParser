@@ -50,12 +50,6 @@ jobs:
     permissions:
       contents: write
     steps:
-      - name: get latest release version
-        id: get_version_release
-        uses: pozetroninc/github-action-get-latest-release@master
-        with:
-          repository: ${{ github.repository }}
-
       - name: download artifacts
         uses: actions/download-artifact@v5
         with:
