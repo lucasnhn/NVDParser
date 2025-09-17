@@ -34,7 +34,7 @@ jobs:
           if [[ "${{ matrix.goos }}" == "windows" ]]; then
             BIN="$NAME.exe"
           fi
-          GOOS=${{ matrix.goos }} GOARCH=${{ matrix.goarch }} go get . && go build -o $BIN .
+          GOOS=${{ matrix.goos }} GOARCH=${{ matrix.goarch }} go build -o $BIN .
           tar -czf "${OUTNAME}.tar.gz" $BIN
           rm $BIN
 
