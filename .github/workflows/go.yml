@@ -44,7 +44,6 @@ jobs:
           name: ${{ matrix.goos }}-${{ matrix.arch_name }}
           path: "*.tar.gz"
   release:
-    if: github.event_name == 'push' && github.ref == 'refs/heads/master' && github.repository == 'fastfetch-cli/fastfetch'
     name: Release
     runs-on: ubuntu-latest
     needs: [build]
