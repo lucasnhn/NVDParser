@@ -56,6 +56,10 @@ jobs:
 
       - name: create release
         uses: ncipollo/release-action@v1
+        with:
+          artifactErrorsFailBuild: true
+          artifacts: ./**/*.tar.gz
+          body: "Release for NVD Parser"
 
       - name: download source tarballs
         run: |
