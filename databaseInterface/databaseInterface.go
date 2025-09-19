@@ -4,48 +4,31 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
-	"nvd_parser/cve"
-	"os"
-	"strings"
-	"time"
-
 	"github.com/jackc/pgx/v5"
 	"github.com/jackc/pgx/v5/pgxpool"
 	_ "github.com/jackc/pgx/v5/stdlib"
 	"golang.org/x/term"
+	"nvd_parser/cve"
+	"os"
+	"strings"
+	"time"
 )
-
-// var pool *pgxpool.Pool
-
-var suppliedPassword string
-var suppliedUsername string = "postgres"
-
-func InitiateConnectionPGXWithUsernameAndPassword(ctx context.Context, password string, username string) (*pgxpool.Pool, error) {
-	suppliedPassword = password
-	suppliedUsername = username
-	return InitiateConnectionPGX(ctx)
-}
 
 // InitiateConnectionPGX prompts for a password and returns a pgx pool suitable for CopyFrom.
 // Defaults: user=postgres, db=postgres, host=localhost, port=5432, sslmode=disable.
-func InitiateConnectionPGX(ctx context.Context) (*pgxpool.Pool, error) {
-	user := suppliedUsername
-	dbname := "nvd"
-	host := "localhost"
-	port := 5432
-
-	if suppliedPassword == "" {
+func InitiateConnectionPGX(ctx context.Context, user string, password string, dbname string, port int, host string) (*pgxpool.Pool, error) {
+	if password == "" {
 		fmt.Printf("Enter password for Postgres user %q: ", user)
 		pwBytes, err := term.ReadPassword(int(os.Stdin.Fd()))
 		fmt.Println()
 		if err != nil {
 			return nil, fmt.Errorf("read password: %w", err)
 		}
-		suppliedPassword = strings.TrimSpace(string(pwBytes))
+		password = strings.TrimSpace(string(pwBytes))
 	}
 
 	dsn := fmt.Sprintf("postgres://%s:%s@%s:%d/%s?sslmode=disable",
-		user, suppliedPassword, host, port, dbname)
+		user, password, host, port, dbname)
 
 	cfg, err := pgxpool.ParseConfig(dsn)
 	if err != nil {

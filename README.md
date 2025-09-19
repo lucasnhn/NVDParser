@@ -1,18 +1,13 @@
-
 # CVE Updater
 
-This tool synchronizes a local PostgreSQL database with the latest CVE (Common Vulnerabilities and Exposures) data from the [NIST NVD](https://nvd.nist.gov/).
+This tool synchronizes a local PostgreSQL database with the latest CVE (Common Vulnerabilities and Exposures) data from the [NIST NVD](https://nvd.nist.gov/).  
 It supports both one-time updates and continuous syncing to keep your database current.
-
 
 ## Database setup
 
-To setup the database to begin mirroring nvd in postgresql database, you must first create the database nvd, and run the [schema.sql](schema.sql) on the nvd database, ensure the user you want to use is authorized on the database.
+To set up the database, create a PostgreSQL database named `nvd` and run [schema.sql](schema.sql) on it. Ensure your user has the necessary privileges.
 
-
-It is recommended increase max_wal_size in postgreql.conf from defalt e.g. 5GB to avoid excessive postgres I/O wait times due to checkpoints during large COPY operations from update-all
-
----
+It is recommended to increase `max_wal_size` in `postgresql.conf` (e.g., to 5GB) to avoid excessive I/O wait times during large updates.
 
 ## Usage
 
@@ -20,78 +15,106 @@ It is recommended increase max_wal_size in postgreql.conf from defalt e.g. 5GB t
 cve-updater [options]
 ```
 
----
-
 ## Options
 
 ### Update Options
 
-* `-a`, `-update-all`
-  Run a full update on **all CVEs**.
-  Recommended if the database has not been updated in more than 8 days, to ensure a complete and accurate clone of the NVD.
+* `-a`, `-update-all`  
+  Run a full update on all CVEs. Use if the database hasn’t been updated in more than 8 days.
 
-* `-r`, `-update-recent`
-  Update CVE data from the **last 8 days**, then exit.
-  Faster than a full update and suitable for frequent runs.
+* `-r`, `-update-recent`  
+  Update CVE data from the last 8 days, then exit. Suitable for frequent runs.
 
-* `-k`, `-keep-updated`
-  Run continuously, checking for new CVEs every **15 minutes** and updating the database automatically.
-  Ideal for keeping the database in sync without manual intervention.
-
----
+* `-k`, `-keep-updated`  
+  Run continuously, checking for new CVEs every 15 minutes.
 
 ### Database Authentication
 
-* `-u string`, `-username string`
-  Database username. Defaults to `"postgres"`.
+You can provide credentials and connection details by **either** runtime arguments (flags) **or** environment variables, but not both for the same field.
 
-* `-p string`, `-password string`
-  Database password. Supplying it here prevents the program from prompting interactively.
+#### Runtime arguments (flags):
 
----
+* `-u string`, `-username string`  
+  Database username (default: `postgres`).
+
+* `-p string`, `-password string`  
+  Database password.
+
+* `-h string`, `-host string`  
+  Database host (default: `localhost`).
+
+* `-d string`, `-dbname string`  
+  Database name (default: `nvd`).
+
+* `--port int`  
+  Database port (default: `5432`).
+
+#### Environment Variables:
+
+Instead of flags, you can use:
+
+- `NVD_PARSER_USERNAME`
+- `NVD_PARSER_PASSWORD`
+- `NVD_PARSER_HOST`
+- `NVD_PARSER_DBNAME`
+- `NVD_PARSER_PORT`
+
+If both a flag and an environment variable are set for the same parameter, the program will return an error and exit.
 
 ### Status
 
-* `-s string`, `-status string`
-  Display database update status. Useful for verifying whether your local copy is up to date.
-
----
+* `-s string`, `-status string`  
+  Display database update status.
 
 ## Examples
 
-* Update **all CVEs**:
+* Update all CVEs:
 
   ```bash
   cve-updater -a
   ```
 
-* Update only **recent CVEs** (last 8 days):
+* Update only recent CVEs:
 
   ```bash
   cve-updater -r
   ```
 
-* Run in **continuous mode** (updates every 15 minutes):
+* Run in continuous mode:
 
   ```bash
   cve-updater -k
   ```
 
-* Connect with custom credentials:
+* Connect with custom credentials (flags):
 
   ```bash
   cve-updater -u myuser -p mypassword -a
   ```
 
-* Check database **status**:
+* Connect with environment variables:
+
+  ```bash
+  export NVD_PARSER_USERNAME=myuser
+  export NVD_PARSER_PASSWORD=mypassword
+  export NVD_PARSER_HOST=localhost
+  export NVD_PARSER_DBNAME=nvd
+  export NVD_PARSER_PORT=5432
+  cve-updater -a
+  ```
+
+* Check status:
 
   ```bash
   cve-updater -s
   ```
 
----
-
 ## Notes
 
-* Use `-update-all` if your database has not been updated recently (more than 8 days).
-* Continuous mode (`-k` / `-keep-updated`) is the simplest option to keep database updated, however, running recent update (`-r` / `-update-recent`) scheduled with e.g. a crontab entry is also a good option
+* Use `-update-all` if your database has not been updated in over 8 days.
+* Continuous mode (`-k`) is an easy way to keep updated, or you can use `-r` in a scheduled job.
+
+## Configuration Precedence
+
+Database connection settings can be provided with flags or environment variables (prefix `NVD_PARSER_`).  
+Do not set both for the same option; if both are set, the tool will exit with an error to avoid ambiguity.
