@@ -8,6 +8,7 @@ import (
 	"github.com/jackc/pgx/v5/pgxpool"
 	_ "github.com/jackc/pgx/v5/stdlib"
 	"golang.org/x/term"
+	"nvd_parser/constants"
 	"nvd_parser/cve"
 	"os"
 	"strings"
@@ -44,8 +45,6 @@ func InitiateConnectionPGX(ctx context.Context, user string, password string, db
 	}
 	return pool, nil
 }
-
-const preferredSource = "nvd@nist.gov"
 
 // queryAllCVEAndModified returns a row iterator of (cve_id, last_modified).
 // Caller MUST rows.Close() after iteration.
@@ -85,7 +84,7 @@ func convertIntoMap(rows pgx.Rows) map[string]time.Time {
 }
 
 // Generic, in-place partition. Returns cutoff where keep(x)==true ends. Returns first indice with false keep function
-func PartitionInPlace[T any](s *[]T, keep func(T) bool) int {
+func partitionInPlace[T any](s *[]T, keep func(T) bool) int {
 	a := *s
 	i, j := 0, len(a)-1
 	for i <= j {
@@ -104,71 +103,18 @@ func PartitionInPlace[T any](s *[]T, keep func(T) bool) int {
 	return i
 }
 
-func testPartitioning(cves []cve.CVE, newCVES []cve.CVE, oodCVES []cve.CVE, dates map[string]time.Time) {
-	var TnewCVES []cve.CVE
-	var ToodCVES []cve.CVE // Out Of Date CVES
-
-	// Recompute classification (expected sets)
-	for _, cve := range cves {
-		if stored, ok := dates[cve.ID]; !ok {
-			TnewCVES = append(TnewCVES, cve)
-		} else if lm := parseTS(cve.LastModified); lm != nil && stored.Before(*lm) {
-			ToodCVES = append(ToodCVES, cve)
-		}
-	}
-
-	// Helper: turn slice of CVEs into a set of IDs
-	toIDSet := func(list []cve.CVE) map[string]struct{} {
-		m := make(map[string]struct{}, len(list))
-		for _, c := range list {
-			m[c.ID] = struct{}{}
-		}
-		return m
-	}
-
-	// Build sets
-	gotNew := toIDSet(newCVES)
-	expNew := toIDSet(TnewCVES)
-
-	gotOOD := toIDSet(oodCVES)
-	expOOD := toIDSet(ToodCVES)
-
-	// Compare sets
-	isEqualNew := len(gotNew) == len(expNew)
-	if isEqualNew {
-		for id := range gotNew {
-			if _, ok := expNew[id]; !ok {
-				isEqualNew = false
-				break
-			}
-		}
-	}
-
-	isEqualOOD := len(gotOOD) == len(expOOD)
-	if isEqualOOD {
-		for id := range gotOOD {
-			if _, ok := expOOD[id]; !ok {
-				isEqualOOD = false
-				break
-			}
-		}
-	}
-
-	fmt.Printf("result of comparison is for newCVES: %v, for oodCVES: %v\n", isEqualNew, isEqualOOD)
-}
-
 func getPartitions(cves *[]cve.CVE, dates map[string]time.Time) (
 	newCVES []cve.CVE,
 	oodCVES []cve.CVE,
 ) {
 
-	var cutOffNew int = PartitionInPlace(cves, func(cv cve.CVE) bool {
+	var cutOffNew int = partitionInPlace(cves, func(cv cve.CVE) bool {
 		_, ok := dates[cv.ID]
 		return !ok
 	})
 
 	tail := (*cves)[cutOffNew:]
-	tailCut := PartitionInPlace(&tail, func(cv cve.CVE) bool {
+	tailCut := partitionInPlace(&tail, func(cv cve.CVE) bool {
 		if stored, ok := dates[cv.ID]; ok {
 			if lm := parseTS(cv.LastModified); lm != nil && stored.Before(*lm) {
 				return true
@@ -447,7 +393,7 @@ func nilIfEmpty(s string) any {
 
 func pickPreferredV40(list []cve.CvssV40) *cve.CvssV40 {
 	for _, m := range list {
-		if strings.EqualFold(m.Source, preferredSource) {
+		if strings.EqualFold(m.Source, constants.PreferredSource) {
 			return &m
 		}
 	}
@@ -459,7 +405,7 @@ func pickPreferredV40(list []cve.CvssV40) *cve.CvssV40 {
 
 func pickPreferredV31(list []cve.CvssV3x) *cve.CvssV3x {
 	for _, m := range list {
-		if strings.EqualFold(m.Source, preferredSource) {
+		if strings.EqualFold(m.Source, constants.PreferredSource) {
 			return &m
 		}
 	}
@@ -471,7 +417,7 @@ func pickPreferredV31(list []cve.CvssV3x) *cve.CvssV3x {
 
 func pickPreferredV20(list []cve.CvssV2) *cve.CvssV2 {
 	for _, m := range list {
-		if strings.EqualFold(m.Source, preferredSource) {
+		if strings.EqualFold(m.Source, constants.PreferredSource) {
 			return &m
 		}
 	}

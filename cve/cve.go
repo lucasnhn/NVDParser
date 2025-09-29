@@ -5,6 +5,11 @@
 
 package cve
 
+func (cve CVE) IsValid() bool {
+	return (cve.VulnStatus != "Rejected") && (cve.Metrics.CvssMetricV2 != nil || cve.Metrics.CvssMetricV30 != nil ||
+		cve.Metrics.CvssMetricV31 != nil || cve.Metrics.CvssMetricV40 != nil)
+}
+
 // Root is the top-level document.
 type Root struct {
 	Format          string          `json:"format"`

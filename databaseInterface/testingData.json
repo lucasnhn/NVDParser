@@ -1,0 +1,1755 @@
+{
+  "format": "NVD_CVE",
+  "resultsPerPage": 1503,
+  "startIndex": 0,
+  "timestamp": "2025-09-19T10:00:00.3309749",
+  "totalResults": 1503,
+  "version": "2.0",
+  "vulnerabilities": [
+    {
+      "cve": {
+        "cisaActionDue": "",
+        "cisaExploitAdd": "",
+        "cisaRequiredAction": "",
+        "cisaVulnerabilityName": "",
+        "configurations": null,
+        "cveTags": [],
+        "descriptions": [
+          {
+            "lang": "en",
+            "value": "A weakness has been identified in lokibhardwaj PHP-Code-For-Unlimited-File-Upload up to 124fe96324915490c81eaf7db3234b0b4e4bab3c. This affects an unknown part of the file /f.php. This manipulation of the argument h causes cross site scripting. Remote exploitation of the attack is possible. The exploit has been made available to the public and could be exploited. This product follows a rolling release approach for continuous delivery, so version details for affected or updated releases are not provided. The vendor was contacted early about this disclosure but did not respond in any way."
+          }
+        ],
+        "id": "CVE-2025-10246",
+        "lastModified": "2025-09-11T17:14:10.147",
+        "metrics": {
+          "cvssMetricV2": [
+            {
+              "acInsufInfo": false,
+              "baseSeverity": "MEDIUM",
+              "cvssData": {
+                "accessComplexity": "LOW",
+                "accessVector": "NETWORK",
+                "authentication": "SINGLE",
+                "availabilityImpact": "NONE",
+                "baseScore": 4,
+                "confidentialityImpact": "NONE",
+                "integrityImpact": "PARTIAL",
+                "vectorString": "AV:N/AC:L/Au:S/C:N/I:P/A:N",
+                "version": "2.0"
+              },
+              "exploitabilityScore": 8,
+              "impactScore": 2.9,
+              "obtainAllPrivilege": false,
+              "obtainOtherPrivilege": false,
+              "obtainUserPrivilege": false,
+              "source": "cna@vuldb.com",
+              "type": "Secondary",
+              "userInteractionRequired": false
+            }
+          ],
+          "cvssMetricV30": null,
+          "cvssMetricV31": [
+            {
+              "cvssData": {
+                "attackComplexity": "LOW",
+                "attackVector": "NETWORK",
+                "availabilityImpact": "NONE",
+                "baseScore": 3.5,
+                "baseSeverity": "LOW",
+                "confidentialityImpact": "NONE",
+                "integrityImpact": "LOW",
+                "privilegesRequired": "LOW",
+                "scope": "UNCHANGED",
+                "userInteraction": "REQUIRED",
+                "vectorString": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:U/C:N/I:L/A:N",
+                "version": "3.1"
+              },
+              "exploitabilityScore": 2.1,
+              "impactScore": 1.4,
+              "source": "cna@vuldb.com",
+              "type": "Primary"
+            }
+          ],
+          "cvssMetricV40": [
+            {
+              "cvssData": {
+                "Automatable": "NOT_DEFINED",
+                "Recovery": "NOT_DEFINED",
+                "Safety": "NOT_DEFINED",
+                "attackComplexity": "LOW",
+                "attackRequirements": "NONE",
+                "attackVector": "NETWORK",
+                "availabilityRequirement": "NOT_DEFINED",
+                "baseScore": 5.1,
+                "baseSeverity": "MEDIUM",
+                "confidentialityRequirement": "NOT_DEFINED",
+                "exploitMaturity": "PROOF_OF_CONCEPT",
+                "integrityRequirement": "NOT_DEFINED",
+                "modifiedAttackComplexity": "NOT_DEFINED",
+                "modifiedAttackRequirements": "NOT_DEFINED",
+                "modifiedAttackVector": "NOT_DEFINED",
+                "modifiedPrivilegesRequired": "NOT_DEFINED",
+                "modifiedSubAvailabilityImpact": "NOT_DEFINED",
+                "modifiedSubConfidentialityImpact": "NOT_DEFINED",
+                "modifiedSubIntegrityImpact": "NOT_DEFINED",
+                "modifiedUserInteraction": "NOT_DEFINED",
+                "modifiedVulnAvailabilityImpact": "NOT_DEFINED",
+                "modifiedVulnConfidentialityImpact": "NOT_DEFINED",
+                "modifiedVulnIntegrityImpact": "NOT_DEFINED",
+                "privilegesRequired": "LOW",
+                "providerUrgency": "NOT_DEFINED",
+                "subAvailabilityImpact": "NONE",
+                "subConfidentialityImpact": "NONE",
+                "subIntegrityImpact": "NONE",
+                "userInteraction": "PASSIVE",
+                "valueDensity": "NOT_DEFINED",
+                "vectorString": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:P/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N/E:P/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+                "version": "4.0",
+                "vulnAvailabilityImpact": "NONE",
+                "vulnConfidentialityImpact": "NONE",
+                "vulnIntegrityImpact": "LOW",
+                "vulnerabilityResponseEffort": "NOT_DEFINED"
+              },
+              "source": "cna@vuldb.com",
+              "type": "Secondary"
+            }
+          ]
+        },
+        "published": "2025-09-11T05:15:33.420",
+        "references": [
+          {
+            "source": "cna@vuldb.com",
+            "tags": null,
+            "url": "https://vuldb.com/?ctiid.323546"
+          },
+          {
+            "source": "cna@vuldb.com",
+            "tags": null,
+            "url": "https://vuldb.com/?id.323546"
+          },
+          {
+            "source": "cna@vuldb.com",
+            "tags": null,
+            "url": "https://vuldb.com/?submit.642206"
+          }
+        ],
+        "sourceIdentifier": "cna@vuldb.com",
+        "vulnStatus": "Awaiting Analysis",
+        "weaknesses": [
+          {
+            "description": [
+              {
+                "lang": "en",
+                "value": "CWE-79"
+              },
+              {
+                "lang": "en",
+                "value": "CWE-94"
+              }
+            ],
+            "source": "cna@vuldb.com",
+            "type": "Primary"
+          }
+        ]
+      }
+    },
+    {
+      "cve": {
+        "cisaActionDue": "",
+        "cisaExploitAdd": "",
+        "cisaRequiredAction": "",
+        "cisaVulnerabilityName": "",
+        "configurations": null,
+        "cveTags": [],
+        "descriptions": [
+          {
+            "lang": "en",
+            "value": "The CatFolders – Tame Your WordPress Media Library by Category plugin for WordPress is vulnerable to time-based SQL Injection via the CSV Import contents in all versions up to, and including, 2.5.2 due to insufficient escaping on the user supplied parameter and lack of sufficient preparation on the existing SQL query.  This makes it possible for authenticated attackers, with Author-level access and above, to append additional SQL queries into already existing queries that can be used to extract sensitive information from the database."
+          }
+        ],
+        "id": "CVE-2025-9776",
+        "lastModified": "2025-09-11T17:14:10.147",
+        "metrics": {
+          "cvssMetricV2": null,
+          "cvssMetricV30": null,
+          "cvssMetricV31": [
+            {
+              "cvssData": {
+                "attackComplexity": "LOW",
+                "attackVector": "NETWORK",
+                "availabilityImpact": "NONE",
+                "baseScore": 6.5,
+                "baseSeverity": "MEDIUM",
+                "confidentialityImpact": "HIGH",
+                "integrityImpact": "NONE",
+                "privilegesRequired": "LOW",
+                "scope": "UNCHANGED",
+                "userInteraction": "NONE",
+                "vectorString": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N",
+                "version": "3.1"
+              },
+              "exploitabilityScore": 2.8,
+              "impactScore": 3.6,
+              "source": "security@wordfence.com",
+              "type": "Primary"
+            }
+          ],
+          "cvssMetricV40": null
+        },
+        "published": "2025-09-11T05:15:33.943",
+        "references": [
+          {
+            "source": "security@wordfence.com",
+            "tags": null,
+            "url": "https://plugins.trac.wordpress.org/browser/catfolders/tags/2.5.1/includes/Models/FolderModel.php#L376"
+          },
+          {
+            "source": "security@wordfence.com",
+            "tags": null,
+            "url": "https://plugins.trac.wordpress.org/browser/catfolders/tags/2.5.1/includes/Rest/Controllers/ImportController.php#L433"
+          },
+          {
+            "source": "security@wordfence.com",
+            "tags": null,
+            "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/e585998a-d78f-4923-865c-c3a9820b583f?source=cve"
+          }
+        ],
+        "sourceIdentifier": "security@wordfence.com",
+        "vulnStatus": "Awaiting Analysis",
+        "weaknesses": [
+          {
+            "description": [
+              {
+                "lang": "en",
+                "value": "CWE-89"
+              }
+            ],
+            "source": "security@wordfence.com",
+            "type": "Primary"
+          }
+        ]
+      }
+    },
+    {
+      "cve": {
+        "cisaActionDue": "",
+        "cisaExploitAdd": "",
+        "cisaRequiredAction": "",
+        "cisaVulnerabilityName": "",
+        "configurations": null,
+        "cveTags": [],
+        "descriptions": [
+          {
+            "lang": "en",
+            "value": "Versions of the package jsondiffpatch before 0.7.2 are vulnerable to Cross-site Scripting (XSS) via HtmlFormatter::nodeBegin. An attacker can inject malicious scripts into HTML payloads that may lead to code execution if untrusted payloads were used as source for the diff, and the result renderer using the built-in html formatter on a private website."
+          }
+        ],
+        "id": "CVE-2025-9910",
+        "lastModified": "2025-09-11T17:14:10.147",
+        "metrics": {
+          "cvssMetricV2": null,
+          "cvssMetricV30": null,
+          "cvssMetricV31": [
+            {
+              "cvssData": {
+                "attackComplexity": "HIGH",
+                "attackVector": "NETWORK",
+                "availabilityImpact": "NONE",
+                "baseScore": 4.7,
+                "baseSeverity": "MEDIUM",
+                "confidentialityImpact": "LOW",
+                "integrityImpact": "LOW",
+                "privilegesRequired": "NONE",
+                "scope": "CHANGED",
+                "userInteraction": "REQUIRED",
+                "vectorString": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:C/C:L/I:L/A:N",
+                "version": "3.1"
+              },
+              "exploitabilityScore": 1.6,
+              "impactScore": 2.7,
+              "source": "report@snyk.io",
+              "type": "Secondary"
+            }
+          ],
+          "cvssMetricV40": [
+            {
+              "cvssData": {
+                "Automatable": "NOT_DEFINED",
+                "Recovery": "NOT_DEFINED",
+                "Safety": "NOT_DEFINED",
+                "attackComplexity": "LOW",
+                "attackRequirements": "PRESENT",
+                "attackVector": "NETWORK",
+                "availabilityRequirement": "NOT_DEFINED",
+                "baseScore": 1.3,
+                "baseSeverity": "LOW",
+                "confidentialityRequirement": "NOT_DEFINED",
+                "exploitMaturity": "PROOF_OF_CONCEPT",
+                "integrityRequirement": "NOT_DEFINED",
+                "modifiedAttackComplexity": "NOT_DEFINED",
+                "modifiedAttackRequirements": "NOT_DEFINED",
+                "modifiedAttackVector": "NOT_DEFINED",
+                "modifiedPrivilegesRequired": "NOT_DEFINED",
+                "modifiedSubAvailabilityImpact": "NOT_DEFINED",
+                "modifiedSubConfidentialityImpact": "NOT_DEFINED",
+                "modifiedSubIntegrityImpact": "NOT_DEFINED",
+                "modifiedUserInteraction": "NOT_DEFINED",
+                "modifiedVulnAvailabilityImpact": "NOT_DEFINED",
+                "modifiedVulnConfidentialityImpact": "NOT_DEFINED",
+                "modifiedVulnIntegrityImpact": "NOT_DEFINED",
+                "privilegesRequired": "NONE",
+                "providerUrgency": "NOT_DEFINED",
+                "subAvailabilityImpact": "NONE",
+                "subConfidentialityImpact": "LOW",
+                "subIntegrityImpact": "LOW",
+                "userInteraction": "PASSIVE",
+                "valueDensity": "NOT_DEFINED",
+                "vectorString": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:P/VC:N/VI:N/VA:N/SC:L/SI:L/SA:N/E:P/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+                "version": "4.0",
+                "vulnAvailabilityImpact": "NONE",
+                "vulnConfidentialityImpact": "NONE",
+                "vulnIntegrityImpact": "NONE",
+                "vulnerabilityResponseEffort": "NOT_DEFINED"
+              },
+              "source": "report@snyk.io",
+              "type": "Secondary"
+            }
+          ]
+        },
+        "published": "2025-09-11T05:15:34.137",
+        "references": [
+          {
+            "source": "report@snyk.io",
+            "tags": null,
+            "url": "https://benjamine.github.io/jsondiffpatch/index.html"
+          },
+          {
+            "source": "report@snyk.io",
+            "tags": null,
+            "url": "https://github.com/benjamine/jsondiffpatch/commit/0e374b5dd8d7879b329a9fc18affbd46ad50dd14"
+          },
+          {
+            "source": "report@snyk.io",
+            "tags": null,
+            "url": "https://github.com/benjamine/jsondiffpatch/issues/383"
+          },
+          {
+            "source": "report@snyk.io",
+            "tags": null,
+            "url": "https://security.snyk.io/vuln/SNYK-JAVA-ORGWEBJARSBOWER-12549277"
+          },
+          {
+            "source": "report@snyk.io",
+            "tags": null,
+            "url": "https://security.snyk.io/vuln/SNYK-JAVA-ORGWEBJARSNPM-12549276"
+          },
+          {
+            "source": "report@snyk.io",
+            "tags": null,
+            "url": "https://security.snyk.io/vuln/SNYK-JS-JSONDIFFPATCH-10369031"
+          }
+        ],
+        "sourceIdentifier": "report@snyk.io",
+        "vulnStatus": "Awaiting Analysis",
+        "weaknesses": [
+          {
+            "description": [
+              {
+                "lang": "en",
+                "value": "CWE-79"
+              }
+            ],
+            "source": "report@snyk.io",
+            "type": "Secondary"
+          }
+        ]
+      }
+    },
+    {
+      "cve": {
+        "cisaActionDue": "",
+        "cisaExploitAdd": "",
+        "cisaRequiredAction": "",
+        "cisaVulnerabilityName": "",
+        "configurations": null,
+        "cveTags": [],
+        "descriptions": [
+          {
+            "lang": "en",
+            "value": "A security vulnerability has been detected in JEPaaS 7.2.8. This vulnerability affects the function doFilterInternal of the component Filter Handler. Such manipulation leads to improper access controls. The attack can be executed remotely. The exploit has been disclosed publicly and may be used. The vendor was contacted early about this disclosure but did not respond in any way."
+          }
+        ],
+        "id": "CVE-2025-10247",
+        "lastModified": "2025-09-11T17:14:10.147",
+        "metrics": {
+          "cvssMetricV2": [
+            {
+              "acInsufInfo": false,
+              "baseSeverity": "MEDIUM",
+              "cvssData": {
+                "accessComplexity": "LOW",
+                "accessVector": "NETWORK",
+                "authentication": "SINGLE",
+                "availabilityImpact": "PARTIAL",
+                "baseScore": 6.5,
+                "confidentialityImpact": "PARTIAL",
+                "integrityImpact": "PARTIAL",
+                "vectorString": "AV:N/AC:L/Au:S/C:P/I:P/A:P",
+                "version": "2.0"
+              },
+              "exploitabilityScore": 8,
+              "impactScore": 6.4,
+              "obtainAllPrivilege": false,
+              "obtainOtherPrivilege": false,
+              "obtainUserPrivilege": false,
+              "source": "cna@vuldb.com",
+              "type": "Secondary",
+              "userInteractionRequired": false
+            }
+          ],
+          "cvssMetricV30": null,
+          "cvssMetricV31": [
+            {
+              "cvssData": {
+                "attackComplexity": "LOW",
+                "attackVector": "NETWORK",
+                "availabilityImpact": "LOW",
+                "baseScore": 6.3,
+                "baseSeverity": "MEDIUM",
+                "confidentialityImpact": "LOW",
+                "integrityImpact": "LOW",
+                "privilegesRequired": "LOW",
+                "scope": "UNCHANGED",
+                "userInteraction": "NONE",
+                "vectorString": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L",
+                "version": "3.1"
+              },
+              "exploitabilityScore": 2.8,
+              "impactScore": 3.4,
+              "source": "cna@vuldb.com",
+              "type": "Primary"
+            }
+          ],
+          "cvssMetricV40": [
+            {
+              "cvssData": {
+                "Automatable": "NOT_DEFINED",
+                "Recovery": "NOT_DEFINED",
+                "Safety": "NOT_DEFINED",
+                "attackComplexity": "LOW",
+                "attackRequirements": "NONE",
+                "attackVector": "NETWORK",
+                "availabilityRequirement": "NOT_DEFINED",
+                "baseScore": 5.3,
+                "baseSeverity": "MEDIUM",
+                "confidentialityRequirement": "NOT_DEFINED",
+                "exploitMaturity": "PROOF_OF_CONCEPT",
+                "integrityRequirement": "NOT_DEFINED",
+                "modifiedAttackComplexity": "NOT_DEFINED",
+                "modifiedAttackRequirements": "NOT_DEFINED",
+                "modifiedAttackVector": "NOT_DEFINED",
+                "modifiedPrivilegesRequired": "NOT_DEFINED",
+                "modifiedSubAvailabilityImpact": "NOT_DEFINED",
+                "modifiedSubConfidentialityImpact": "NOT_DEFINED",
+                "modifiedSubIntegrityImpact": "NOT_DEFINED",
+                "modifiedUserInteraction": "NOT_DEFINED",
+                "modifiedVulnAvailabilityImpact": "NOT_DEFINED",
+                "modifiedVulnConfidentialityImpact": "NOT_DEFINED",
+                "modifiedVulnIntegrityImpact": "NOT_DEFINED",
+                "privilegesRequired": "LOW",
+                "providerUrgency": "NOT_DEFINED",
+                "subAvailabilityImpact": "NONE",
+                "subConfidentialityImpact": "NONE",
+                "subIntegrityImpact": "NONE",
+                "userInteraction": "NONE",
+                "valueDensity": "NOT_DEFINED",
+                "vectorString": "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:L/VI:L/VA:L/SC:N/SI:N/SA:N/E:P/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+                "version": "4.0",
+                "vulnAvailabilityImpact": "LOW",
+                "vulnConfidentialityImpact": "LOW",
+                "vulnIntegrityImpact": "LOW",
+                "vulnerabilityResponseEffort": "NOT_DEFINED"
+              },
+              "source": "cna@vuldb.com",
+              "type": "Secondary"
+            }
+          ]
+        },
+        "published": "2025-09-11T06:15:36.860",
+        "references": [
+          {
+            "source": "cna@vuldb.com",
+            "tags": null,
+            "url": "https://github.com/c3p0ooo-Yiqiyin/JEPaaS-Access-control-bypass-vulnerability/blob/main/README.md"
+          },
+          {
+            "source": "cna@vuldb.com",
+            "tags": null,
+            "url": "https://vuldb.com/?ctiid.323547"
+          },
+          {
+            "source": "cna@vuldb.com",
+            "tags": null,
+            "url": "https://vuldb.com/?id.323547"
+          },
+          {
+            "source": "cna@vuldb.com",
+            "tags": null,
+            "url": "https://vuldb.com/?submit.642413"
+          }
+        ],
+        "sourceIdentifier": "cna@vuldb.com",
+        "vulnStatus": "Awaiting Analysis",
+        "weaknesses": [
+          {
+            "description": [
+              {
+                "lang": "en",
+                "value": "CWE-266"
+              },
+              {
+                "lang": "en",
+                "value": "CWE-284"
+              }
+            ],
+            "source": "cna@vuldb.com",
+            "type": "Primary"
+          }
+        ]
+      }
+    },
+    {
+      "cve": {
+        "cisaActionDue": "",
+        "cisaExploitAdd": "",
+        "cisaRequiredAction": "",
+        "cisaVulnerabilityName": "",
+        "configurations": null,
+        "cveTags": [],
+        "descriptions": [
+          {
+            "lang": "en",
+            "value": "The Wp Edit Password Protected  WordPress plugin before 1.3.5 does not validate a parameter before redirecting the user to its value, leading to an Open Redirect issue"
+          }
+        ],
+        "id": "CVE-2025-9034",
+        "lastModified": "2025-09-11T17:14:10.147",
+        "metrics": {
+          "cvssMetricV2": null,
+          "cvssMetricV30": null,
+          "cvssMetricV31": [
+            {
+              "cvssData": {
+                "attackComplexity": "LOW",
+                "attackVector": "NETWORK",
+                "availabilityImpact": "NONE",
+                "baseScore": 6.1,
+                "baseSeverity": "MEDIUM",
+                "confidentialityImpact": "LOW",
+                "integrityImpact": "LOW",
+                "privilegesRequired": "NONE",
+                "scope": "CHANGED",
+                "userInteraction": "REQUIRED",
+                "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N",
+                "version": "3.1"
+              },
+              "exploitabilityScore": 2.8,
+              "impactScore": 2.7,
+              "source": "134c704f-9b21-4f2e-91b3-4a467353bcc0",
+              "type": "Secondary"
+            }
+          ],
+          "cvssMetricV40": null
+        },
+        "published": "2025-09-11T06:15:39.013",
+        "references": [
+          {
+            "source": "contact@wpscan.com",
+            "tags": null,
+            "url": "https://wpscan.com/vulnerability/3cf79a0b-2731-47f8-a397-995f4de7067e/"
+          },
+          {
+            "source": "134c704f-9b21-4f2e-91b3-4a467353bcc0",
+            "tags": null,
+            "url": "https://wpscan.com/vulnerability/3cf79a0b-2731-47f8-a397-995f4de7067e/"
+          }
+        ],
+        "sourceIdentifier": "contact@wpscan.com",
+        "vulnStatus": "Awaiting Analysis",
+        "weaknesses": null
+      }
+    },
+    {
+      "cve": {
+        "cisaActionDue": "",
+        "cisaExploitAdd": "",
+        "cisaRequiredAction": "",
+        "cisaVulnerabilityName": "",
+        "configurations": null,
+        "cveTags": [],
+        "descriptions": [
+          {
+            "lang": "en",
+            "value": "The Altiris Core Agent Updater package (AeXNSC.exe) is prone to an elevation of privileges vulnerability through DLL hijacking."
+          }
+        ],
+        "id": "CVE-2025-9059",
+        "lastModified": "2025-09-11T17:14:10.147",
+        "metrics": {
+          "cvssMetricV2": null,
+          "cvssMetricV30": null,
+          "cvssMetricV31": null,
+          "cvssMetricV40": [
+            {
+              "cvssData": {
+                "Automatable": "YES",
+                "Recovery": "AUTOMATIC",
+                "Safety": "PRESENT",
+                "attackComplexity": "LOW",
+                "attackRequirements": "PRESENT",
+                "attackVector": "LOCAL",
+                "availabilityRequirement": "NOT_DEFINED",
+                "baseScore": 8.8,
+                "baseSeverity": "HIGH",
+                "confidentialityRequirement": "NOT_DEFINED",
+                "exploitMaturity": "NOT_DEFINED",
+                "integrityRequirement": "NOT_DEFINED",
+                "modifiedAttackComplexity": "NOT_DEFINED",
+                "modifiedAttackRequirements": "NOT_DEFINED",
+                "modifiedAttackVector": "NOT_DEFINED",
+                "modifiedPrivilegesRequired": "NOT_DEFINED",
+                "modifiedSubAvailabilityImpact": "NOT_DEFINED",
+                "modifiedSubConfidentialityImpact": "NOT_DEFINED",
+                "modifiedSubIntegrityImpact": "NOT_DEFINED",
+                "modifiedUserInteraction": "NOT_DEFINED",
+                "modifiedVulnAvailabilityImpact": "NOT_DEFINED",
+                "modifiedVulnConfidentialityImpact": "NOT_DEFINED",
+                "modifiedVulnIntegrityImpact": "NOT_DEFINED",
+                "privilegesRequired": "LOW",
+                "providerUrgency": "RED",
+                "subAvailabilityImpact": "HIGH",
+                "subConfidentialityImpact": "HIGH",
+                "subIntegrityImpact": "HIGH",
+                "userInteraction": "NONE",
+                "valueDensity": "CONCENTRATED",
+                "vectorString": "CVSS:4.0/AV:L/AC:L/AT:P/PR:L/UI:N/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:P/AU:Y/R:A/V:C/RE:M/U:Red",
+                "version": "4.0",
+                "vulnAvailabilityImpact": "HIGH",
+                "vulnConfidentialityImpact": "HIGH",
+                "vulnIntegrityImpact": "HIGH",
+                "vulnerabilityResponseEffort": "MODERATE"
+              },
+              "source": "secure@symantec.com",
+              "type": "Secondary"
+            }
+          ]
+        },
+        "published": "2025-09-11T06:15:39.183",
+        "references": [
+          {
+            "source": "secure@symantec.com",
+            "tags": null,
+            "url": "https://support.broadcom.com/web/ecx/support-content-notification/-/external/content/SecurityAdvisories/0/36132"
+          }
+        ],
+        "sourceIdentifier": "secure@symantec.com",
+        "vulnStatus": "Awaiting Analysis",
+        "weaknesses": [
+          {
+            "description": [
+              {
+                "lang": "en",
+                "value": "CWE-269"
+              },
+              {
+                "lang": "en",
+                "value": "CWE-427"
+              }
+            ],
+            "source": "secure@symantec.com",
+            "type": "Secondary"
+          }
+        ]
+      }
+    },
+    {
+      "cve": {
+        "cisaActionDue": "",
+        "cisaExploitAdd": "",
+        "cisaRequiredAction": "",
+        "cisaVulnerabilityName": "",
+        "configurations": null,
+        "cveTags": [],
+        "descriptions": [
+          {
+            "lang": "en",
+            "value": "The Zoho Flow plugin for WordPress is vulnerable to Cross-Site Request Forgery in versions up to, and including, 2.14.1. This is due to missing or incorrect nonce validation on the zoho_flow_deactivate_plugin function. This makes it possible for unauthenticated attackers to modify typography settings via a forged request granted they can trick a site administrator into performing an action such as clicking on a link."
+          }
+        ],
+        "id": "CVE-2025-8479",
+        "lastModified": "2025-09-11T17:14:10.147",
+        "metrics": {
+          "cvssMetricV2": null,
+          "cvssMetricV30": null,
+          "cvssMetricV31": [
+            {
+              "cvssData": {
+                "attackComplexity": "LOW",
+                "attackVector": "NETWORK",
+                "availabilityImpact": "NONE",
+                "baseScore": 4.3,
+                "baseSeverity": "MEDIUM",
+                "confidentialityImpact": "NONE",
+                "integrityImpact": "LOW",
+                "privilegesRequired": "NONE",
+                "scope": "UNCHANGED",
+                "userInteraction": "REQUIRED",
+                "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:L/A:N",
+                "version": "3.1"
+              },
+              "exploitabilityScore": 2.8,
+              "impactScore": 1.4,
+              "source": "security@wordfence.com",
+              "type": "Primary"
+            }
+          ],
+          "cvssMetricV40": null
+        },
+        "published": "2025-09-11T07:15:31.200",
+        "references": [
+          {
+            "source": "security@wordfence.com",
+            "tags": null,
+            "url": "https://plugins.trac.wordpress.org/browser/zoho-flow/tags/2.14.1/settings.php#L144"
+          },
+          {
+            "source": "security@wordfence.com",
+            "tags": null,
+            "url": "https://plugins.trac.wordpress.org/browser/zoho-flow/tags/2.14.1/settings.php#L151"
+          },
+          {
+            "source": "security@wordfence.com",
+            "tags": null,
+            "url": "https://plugins.trac.wordpress.org/browser/zoho-flow/tags/2.14.2/settings.php#L144"
+          },
+          {
+            "source": "security@wordfence.com",
+            "tags": null,
+            "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/328fc7a9-be41-4e30-bb8d-c12ac3fd63f5?source=cve"
+          }
+        ],
+        "sourceIdentifier": "security@wordfence.com",
+        "vulnStatus": "Awaiting Analysis",
+        "weaknesses": [
+          {
+            "description": [
+              {
+                "lang": "en",
+                "value": "CWE-352"
+              }
+            ],
+            "source": "security@wordfence.com",
+            "type": "Primary"
+          }
+        ]
+      }
+    },
+    {
+      "cve": {
+        "cisaActionDue": "",
+        "cisaExploitAdd": "",
+        "cisaRequiredAction": "",
+        "cisaVulnerabilityName": "",
+        "configurations": null,
+        "cveTags": [],
+        "descriptions": [
+          {
+            "lang": "en",
+            "value": "The Ultimate Classified Listings plugin for WordPress is vulnerable to unauthorized modification of data due to a missing capability check on the save_custom_fields function in all versions up to, and including, 1.6. This makes it possible for authenticated attackers, with Subscriber-level access and above, to change plugin custom fields."
+          }
+        ],
+        "id": "CVE-2025-0763",
+        "lastModified": "2025-09-11T17:14:10.147",
+        "metrics": {
+          "cvssMetricV2": null,
+          "cvssMetricV30": null,
+          "cvssMetricV31": [
+            {
+              "cvssData": {
+                "attackComplexity": "LOW",
+                "attackVector": "NETWORK",
+                "availabilityImpact": "NONE",
+                "baseScore": 4.3,
+                "baseSeverity": "MEDIUM",
+                "confidentialityImpact": "NONE",
+                "integrityImpact": "LOW",
+                "privilegesRequired": "LOW",
+                "scope": "UNCHANGED",
+                "userInteraction": "NONE",
+                "vectorString": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N",
+                "version": "3.1"
+              },
+              "exploitabilityScore": 2.8,
+              "impactScore": 1.4,
+              "source": "security@wordfence.com",
+              "type": "Primary"
+            }
+          ],
+          "cvssMetricV40": null
+        },
+        "published": "2025-09-11T08:15:32.190",
+        "references": [
+          {
+            "source": "security@wordfence.com",
+            "tags": null,
+            "url": "https://plugins.trac.wordpress.org/browser/ultimate-classified-listings/tags/1.4/classes/class-admin-settings.php#L379"
+          },
+          {
+            "source": "security@wordfence.com",
+            "tags": null,
+            "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/2c368677-e436-412a-9a88-89d128d72aa0?source=cve"
+          }
+        ],
+        "sourceIdentifier": "security@wordfence.com",
+        "vulnStatus": "Awaiting Analysis",
+        "weaknesses": [
+          {
+            "description": [
+              {
+                "lang": "en",
+                "value": "CWE-862"
+              }
+            ],
+            "source": "security@wordfence.com",
+            "type": "Primary"
+          }
+        ]
+      }
+    },
+    {
+      "cve": {
+        "cisaActionDue": "",
+        "cisaExploitAdd": "",
+        "cisaRequiredAction": "",
+        "cisaVulnerabilityName": "",
+        "configurations": null,
+        "cveTags": [],
+        "descriptions": [
+          {
+            "lang": "en",
+            "value": "The Digital Events Calendar plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the ‘column’ parameter in all versions up to, and including, 1.0.8 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with Contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page."
+          }
+        ],
+        "id": "CVE-2025-5801",
+        "lastModified": "2025-09-11T17:14:10.147",
+        "metrics": {
+          "cvssMetricV2": null,
+          "cvssMetricV30": null,
+          "cvssMetricV31": [
+            {
+              "cvssData": {
+                "attackComplexity": "LOW",
+                "attackVector": "NETWORK",
+                "availabilityImpact": "NONE",
+                "baseScore": 6.4,
+                "baseSeverity": "MEDIUM",
+                "confidentialityImpact": "LOW",
+                "integrityImpact": "LOW",
+                "privilegesRequired": "LOW",
+                "scope": "CHANGED",
+                "userInteraction": "NONE",
+                "vectorString": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N",
+                "version": "3.1"
+              },
+              "exploitabilityScore": 3.1,
+              "impactScore": 2.7,
+              "source": "security@wordfence.com",
+              "type": "Primary"
+            }
+          ],
+          "cvssMetricV40": null
+        },
+        "published": "2025-09-11T08:15:32.487",
+        "references": [
+          {
+            "source": "security@wordfence.com",
+            "tags": null,
+            "url": "https://plugins.trac.wordpress.org/browser/digital-events-calendar/trunk/shortcode/Events_List.php#L33"
+          },
+          {
+            "source": "security@wordfence.com",
+            "tags": null,
+            "url": "https://wordpress.org/plugins/digital-events-calendar/#developers"
+          },
+          {
+            "source": "security@wordfence.com",
+            "tags": null,
+            "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/424c23f7-73a4-4b2b-8f52-61cb45523396?source=cve"
+          }
+        ],
+        "sourceIdentifier": "security@wordfence.com",
+        "vulnStatus": "Awaiting Analysis",
+        "weaknesses": [
+          {
+            "description": [
+              {
+                "lang": "en",
+                "value": "CWE-79"
+              }
+            ],
+            "source": "security@wordfence.com",
+            "type": "Primary"
+          }
+        ]
+      }
+    },
+    {
+      "cve": {
+        "cisaActionDue": "",
+        "cisaExploitAdd": "",
+        "cisaRequiredAction": "",
+        "cisaVulnerabilityName": "",
+        "configurations": null,
+        "cveTags": [],
+        "descriptions": [
+          {
+            "lang": "en",
+            "value": "The Responsive Addons for Elementor plugin for WordPress is vulnerable to Stored Cross-Site Scripting via multiple widgets in all versions up to, and including, 1.7.4 due to insufficient input sanitization and output escaping on user supplied attributes. This makes it possible for authenticated attackers, with contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page."
+          }
+        ],
+        "id": "CVE-2025-8215",
+        "lastModified": "2025-09-11T17:14:10.147",
+        "metrics": {
+          "cvssMetricV2": null,
+          "cvssMetricV30": null,
+          "cvssMetricV31": [
+            {
+              "cvssData": {
+                "attackComplexity": "LOW",
+                "attackVector": "NETWORK",
+                "availabilityImpact": "NONE",
+                "baseScore": 6.4,
+                "baseSeverity": "MEDIUM",
+                "confidentialityImpact": "LOW",
+                "integrityImpact": "LOW",
+                "privilegesRequired": "LOW",
+                "scope": "CHANGED",
+                "userInteraction": "NONE",
+                "vectorString": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N",
+                "version": "3.1"
+              },
+              "exploitabilityScore": 3.1,
+              "impactScore": 2.7,
+              "source": "security@wordfence.com",
+              "type": "Primary"
+            }
+          ],
+          "cvssMetricV40": null
+        },
+        "published": "2025-09-11T08:15:32.700",
+        "references": [
+          {
+            "source": "security@wordfence.com",
+            "tags": null,
+            "url": "https://wordpress.org/plugins/responsive-addons-for-elementor/#developers"
+          },
+          {
+            "source": "security@wordfence.com",
+            "tags": null,
+            "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/bd3dbc56-4833-4b5d-bd6c-facc3e1878ea?source=cve"
+          }
+        ],
+        "sourceIdentifier": "security@wordfence.com",
+        "vulnStatus": "Awaiting Analysis",
+        "weaknesses": [
+          {
+            "description": [
+              {
+                "lang": "en",
+                "value": "CWE-79"
+              }
+            ],
+            "source": "security@wordfence.com",
+            "type": "Primary"
+          }
+        ]
+      }
+    },
+    {
+      "cve": {
+        "cisaActionDue": "",
+        "cisaExploitAdd": "",
+        "cisaRequiredAction": "",
+        "cisaVulnerabilityName": "",
+        "configurations": null,
+        "cveTags": [],
+        "descriptions": [
+          {
+            "lang": "en",
+            "value": "The Certifica WP plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the ‘evento’ parameter in all versions up to, and including, 3.1 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with Contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page."
+          }
+        ],
+        "id": "CVE-2025-8316",
+        "lastModified": "2025-09-11T17:14:10.147",
+        "metrics": {
+          "cvssMetricV2": null,
+          "cvssMetricV30": null,
+          "cvssMetricV31": [
+            {
+              "cvssData": {
+                "attackComplexity": "LOW",
+                "attackVector": "NETWORK",
+                "availabilityImpact": "NONE",
+                "baseScore": 6.4,
+                "baseSeverity": "MEDIUM",
+                "confidentialityImpact": "LOW",
+                "integrityImpact": "LOW",
+                "privilegesRequired": "LOW",
+                "scope": "CHANGED",
+                "userInteraction": "NONE",
+                "vectorString": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N",
+                "version": "3.1"
+              },
+              "exploitabilityScore": 3.1,
+              "impactScore": 2.7,
+              "source": "security@wordfence.com",
+              "type": "Primary"
+            }
+          ],
+          "cvssMetricV40": null
+        },
+        "published": "2025-09-11T08:15:32.897",
+        "references": [
+          {
+            "source": "security@wordfence.com",
+            "tags": null,
+            "url": "https://plugins.svn.wordpress.org/certifica-wp/tags/3.1/certificawp.php"
+          },
+          {
+            "source": "security@wordfence.com",
+            "tags": null,
+            "url": "https://wordpress.org/plugins/certifica-wp/#developers"
+          },
+          {
+            "source": "security@wordfence.com",
+            "tags": null,
+            "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/1e7f5355-b87b-4720-8998-c081d005827b?source=cve"
+          }
+        ],
+        "sourceIdentifier": "security@wordfence.com",
+        "vulnStatus": "Awaiting Analysis",
+        "weaknesses": [
+          {
+            "description": [
+              {
+                "lang": "en",
+                "value": "CWE-79"
+              }
+            ],
+            "source": "security@wordfence.com",
+            "type": "Primary"
+          }
+        ]
+      }
+    },
+    {
+      "cve": {
+        "cisaActionDue": "",
+        "cisaExploitAdd": "",
+        "cisaRequiredAction": "",
+        "cisaVulnerabilityName": "",
+        "configurations": null,
+        "cveTags": [],
+        "descriptions": [
+          {
+            "lang": "en",
+            "value": "The Jobify plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the ‘keyword’ parameter in all versions up to, and including, 1.4.4 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with Contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page."
+          }
+        ],
+        "id": "CVE-2025-8318",
+        "lastModified": "2025-09-11T17:14:10.147",
+        "metrics": {
+          "cvssMetricV2": null,
+          "cvssMetricV30": null,
+          "cvssMetricV31": [
+            {
+              "cvssData": {
+                "attackComplexity": "LOW",
+                "attackVector": "NETWORK",
+                "availabilityImpact": "NONE",
+                "baseScore": 6.4,
+                "baseSeverity": "MEDIUM",
+                "confidentialityImpact": "LOW",
+                "integrityImpact": "LOW",
+                "privilegesRequired": "LOW",
+                "scope": "CHANGED",
+                "userInteraction": "NONE",
+                "vectorString": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N",
+                "version": "3.1"
+              },
+              "exploitabilityScore": 3.1,
+              "impactScore": 2.7,
+              "source": "security@wordfence.com",
+              "type": "Primary"
+            }
+          ],
+          "cvssMetricV40": null
+        },
+        "published": "2025-09-11T08:15:33.097",
+        "references": [
+          {
+            "source": "security@wordfence.com",
+            "tags": null,
+            "url": "https://plugins.svn.wordpress.org/jobify/tags/1.4.4/src/Jobify/Shortcodes.php"
+          },
+          {
+            "source": "security@wordfence.com",
+            "tags": null,
+            "url": "https://wordpress.org/plugins/jobify/#developers"
+          },
+          {
+            "source": "security@wordfence.com",
+            "tags": null,
+            "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/5e528d16-4a5d-4ef9-baac-e235fa3b4be3?source=cve"
+          }
+        ],
+        "sourceIdentifier": "security@wordfence.com",
+        "vulnStatus": "Awaiting Analysis",
+        "weaknesses": [
+          {
+            "description": [
+              {
+                "lang": "en",
+                "value": "CWE-79"
+              }
+            ],
+            "source": "security@wordfence.com",
+            "type": "Primary"
+          }
+        ]
+      }
+    },
+    {
+      "cve": {
+        "cisaActionDue": "",
+        "cisaExploitAdd": "",
+        "cisaRequiredAction": "",
+        "cisaVulnerabilityName": "",
+        "configurations": null,
+        "cveTags": [],
+        "descriptions": [
+          {
+            "lang": "en",
+            "value": "The Mitfahrgelegenheit plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the ‘date’ parameter in all versions up to, and including, 1.1.5 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with Contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page."
+          }
+        ],
+        "id": "CVE-2025-8392",
+        "lastModified": "2025-09-11T17:14:10.147",
+        "metrics": {
+          "cvssMetricV2": null,
+          "cvssMetricV30": null,
+          "cvssMetricV31": [
+            {
+              "cvssData": {
+                "attackComplexity": "LOW",
+                "attackVector": "NETWORK",
+                "availabilityImpact": "NONE",
+                "baseScore": 6.4,
+                "baseSeverity": "MEDIUM",
+                "confidentialityImpact": "LOW",
+                "integrityImpact": "LOW",
+                "privilegesRequired": "LOW",
+                "scope": "CHANGED",
+                "userInteraction": "NONE",
+                "vectorString": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N",
+                "version": "3.1"
+              },
+              "exploitabilityScore": 3.1,
+              "impactScore": 2.7,
+              "source": "security@wordfence.com",
+              "type": "Primary"
+            }
+          ],
+          "cvssMetricV40": null
+        },
+        "published": "2025-09-11T08:15:33.290",
+        "references": [
+          {
+            "source": "security@wordfence.com",
+            "tags": null,
+            "url": "https://plugins.svn.wordpress.org/mitfahrgelegenheit/tags/v1.1.5/mitfahrgelegenheit.php"
+          },
+          {
+            "source": "security@wordfence.com",
+            "tags": null,
+            "url": "https://wordpress.org/plugins/mitfahrgelegenheit/#developers"
+          },
+          {
+            "source": "security@wordfence.com",
+            "tags": null,
+            "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/9cd819c2-45ab-4e0d-b29a-d92722db7164?source=cve"
+          }
+        ],
+        "sourceIdentifier": "security@wordfence.com",
+        "vulnStatus": "Awaiting Analysis",
+        "weaknesses": [
+          {
+            "description": [
+              {
+                "lang": "en",
+                "value": "CWE-79"
+              }
+            ],
+            "source": "security@wordfence.com",
+            "type": "Primary"
+          }
+        ]
+      }
+    },
+    {
+      "cve": {
+        "cisaActionDue": "",
+        "cisaExploitAdd": "",
+        "cisaRequiredAction": "",
+        "cisaVulnerabilityName": "",
+        "configurations": null,
+        "cveTags": [],
+        "descriptions": [
+          {
+            "lang": "en",
+            "value": "The azurecurve BBCode plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the plugin's 'url' shortcode in all versions up to, and including, 2.0.4 due to insufficient input sanitization and output escaping on user supplied attributes. This makes it possible for authenticated attackers, with contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page."
+          }
+        ],
+        "id": "CVE-2025-8398",
+        "lastModified": "2025-09-11T17:14:10.147",
+        "metrics": {
+          "cvssMetricV2": null,
+          "cvssMetricV30": null,
+          "cvssMetricV31": [
+            {
+              "cvssData": {
+                "attackComplexity": "LOW",
+                "attackVector": "NETWORK",
+                "availabilityImpact": "NONE",
+                "baseScore": 6.4,
+                "baseSeverity": "MEDIUM",
+                "confidentialityImpact": "LOW",
+                "integrityImpact": "LOW",
+                "privilegesRequired": "LOW",
+                "scope": "CHANGED",
+                "userInteraction": "NONE",
+                "vectorString": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N",
+                "version": "3.1"
+              },
+              "exploitabilityScore": 3.1,
+              "impactScore": 2.7,
+              "source": "security@wordfence.com",
+              "type": "Primary"
+            }
+          ],
+          "cvssMetricV40": null
+        },
+        "published": "2025-09-11T08:15:33.493",
+        "references": [
+          {
+            "source": "security@wordfence.com",
+            "tags": null,
+            "url": "https://plugins.svn.wordpress.org/azurecurve-bbcode/tags/2.0.4/azurecurve-bbcode.php"
+          },
+          {
+            "source": "security@wordfence.com",
+            "tags": null,
+            "url": "https://wordpress.org/plugins/azurecurve-bbcode/#developers"
+          },
+          {
+            "source": "security@wordfence.com",
+            "tags": null,
+            "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/f4eb61dd-f28e-4d8a-8f97-958b6a356309?source=cve"
+          }
+        ],
+        "sourceIdentifier": "security@wordfence.com",
+        "vulnStatus": "Awaiting Analysis",
+        "weaknesses": [
+          {
+            "description": [
+              {
+                "lang": "en",
+                "value": "CWE-79"
+              }
+            ],
+            "source": "security@wordfence.com",
+            "type": "Primary"
+          }
+        ]
+      }
+    },
+    {
+      "cve": {
+        "cisaActionDue": "",
+        "cisaExploitAdd": "",
+        "cisaRequiredAction": "",
+        "cisaVulnerabilityName": "",
+        "configurations": null,
+        "cveTags": [],
+        "descriptions": [
+          {
+            "lang": "en",
+            "value": "The Catalog Importer, Scraper \u0026 Crawler plugin for WordPress is vulnerable to PHP code injection in all versions up to, and including, 5.1.4. This is due to reliance on a guessable numeric token (e.g. ?key= 900001705) without proper authentication, combined with the unsafe use of eval() on user-supplied input. This makes it possible for unauthenticated attackers to execute arbitrary PHP code on the server via a forged request granted they can guess or brute-force the numeric key."
+          }
+        ],
+        "id": "CVE-2025-8417",
+        "lastModified": "2025-09-11T17:14:10.147",
+        "metrics": {
+          "cvssMetricV2": null,
+          "cvssMetricV30": null,
+          "cvssMetricV31": [
+            {
+              "cvssData": {
+                "attackComplexity": "HIGH",
+                "attackVector": "NETWORK",
+                "availabilityImpact": "HIGH",
+                "baseScore": 8.1,
+                "baseSeverity": "HIGH",
+                "confidentialityImpact": "HIGH",
+                "integrityImpact": "HIGH",
+                "privilegesRequired": "NONE",
+                "scope": "UNCHANGED",
+                "userInteraction": "NONE",
+                "vectorString": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
+                "version": "3.1"
+              },
+              "exploitabilityScore": 2.2,
+              "impactScore": 5.9,
+              "source": "security@wordfence.com",
+              "type": "Primary"
+            }
+          ],
+          "cvssMetricV40": null
+        },
+        "published": "2025-09-11T08:15:33.680",
+        "references": [
+          {
+            "source": "security@wordfence.com",
+            "tags": null,
+            "url": "https://plugins.trac.wordpress.org/browser/intelligent-importer/tags/5.1.4/communication.php#L20"
+          },
+          {
+            "source": "security@wordfence.com",
+            "tags": null,
+            "url": "https://plugins.trac.wordpress.org/browser/intelligent-importer/tags/5.1.4/communication.php#L244"
+          },
+          {
+            "source": "security@wordfence.com",
+            "tags": null,
+            "url": "https://plugins.trac.wordpress.org/browser/intelligent-importer/tags/5.1.4/communication.php#L272"
+          },
+          {
+            "source": "security@wordfence.com",
+            "tags": null,
+            "url": "https://plugins.trac.wordpress.org/browser/intelligent-importer/tags/5.1.4/communication.php#L300"
+          },
+          {
+            "source": "security@wordfence.com",
+            "tags": null,
+            "url": "https://plugins.trac.wordpress.org/browser/intelligent-importer/tags/5.1.4/megaimporter.php#L57"
+          },
+          {
+            "source": "security@wordfence.com",
+            "tags": null,
+            "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/3eb3533c-e33c-41db-b9cf-e9d71a0a5588?source=cve"
+          }
+        ],
+        "sourceIdentifier": "security@wordfence.com",
+        "vulnStatus": "Awaiting Analysis",
+        "weaknesses": [
+          {
+            "description": [
+              {
+                "lang": "en",
+                "value": "CWE-94"
+              }
+            ],
+            "source": "security@wordfence.com",
+            "type": "Primary"
+          }
+        ]
+      }
+    },
+    {
+      "cve": {
+        "cisaActionDue": "",
+        "cisaExploitAdd": "",
+        "cisaRequiredAction": "",
+        "cisaVulnerabilityName": "",
+        "configurations": null,
+        "cveTags": [],
+        "descriptions": [
+          {
+            "lang": "en",
+            "value": "The Propovoice: All-in-One Client Management System plugin for WordPress is vulnerable to Arbitrary File Read in all versions up to, and including, 1.7.6.7 via the send_email() function. This makes it possible for unauthenticated attackers to read the contents of arbitrary files on the server, which can contain sensitive information."
+          }
+        ],
+        "id": "CVE-2025-8422",
+        "lastModified": "2025-09-11T17:14:10.147",
+        "metrics": {
+          "cvssMetricV2": null,
+          "cvssMetricV30": null,
+          "cvssMetricV31": [
+            {
+              "cvssData": {
+                "attackComplexity": "LOW",
+                "attackVector": "NETWORK",
+                "availabilityImpact": "NONE",
+                "baseScore": 7.5,
+                "baseSeverity": "HIGH",
+                "confidentialityImpact": "HIGH",
+                "integrityImpact": "NONE",
+                "privilegesRequired": "NONE",
+                "scope": "UNCHANGED",
+                "userInteraction": "NONE",
+                "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+                "version": "3.1"
+              },
+              "exploitabilityScore": 3.9,
+              "impactScore": 3.6,
+              "source": "security@wordfence.com",
+              "type": "Primary"
+            }
+          ],
+          "cvssMetricV40": null
+        },
+        "published": "2025-09-11T08:15:33.883",
+        "references": [
+          {
+            "source": "security@wordfence.com",
+            "tags": null,
+            "url": "https://plugins.trac.wordpress.org/browser/propovoice/trunk/includes/Api/Type/Email.php#L275"
+          },
+          {
+            "source": "security@wordfence.com",
+            "tags": null,
+            "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/3ac72d7a-9540-435f-93cb-fdd4104b18f7?source=cve"
+          }
+        ],
+        "sourceIdentifier": "security@wordfence.com",
+        "vulnStatus": "Awaiting Analysis",
+        "weaknesses": [
+          {
+            "description": [
+              {
+                "lang": "en",
+                "value": "CWE-73"
+              }
+            ],
+            "source": "security@wordfence.com",
+            "type": "Primary"
+          }
+        ]
+      }
+    },
+    {
+      "cve": {
+        "cisaActionDue": "",
+        "cisaExploitAdd": "",
+        "cisaRequiredAction": "",
+        "cisaVulnerabilityName": "",
+        "configurations": null,
+        "cveTags": [],
+        "descriptions": [
+          {
+            "lang": "en",
+            "value": "The My WP Translate plugin for WordPress is vulnerable to unauthorized modification of data due to a missing capability check on the mtswpt_remove_plugin() and ajax_update_export_code() functions in all versions up to, and including, 1.1. This makes it possible for authenticated attackers, with Subscriber-level access and above, to read and delete arbitrary WordPress options which can cause a denial of service."
+          }
+        ],
+        "id": "CVE-2025-8423",
+        "lastModified": "2025-09-11T17:14:10.147",
+        "metrics": {
+          "cvssMetricV2": null,
+          "cvssMetricV30": null,
+          "cvssMetricV31": [
+            {
+              "cvssData": {
+                "attackComplexity": "LOW",
+                "attackVector": "NETWORK",
+                "availabilityImpact": "LOW",
+                "baseScore": 5.4,
+                "baseSeverity": "MEDIUM",
+                "confidentialityImpact": "NONE",
+                "integrityImpact": "LOW",
+                "privilegesRequired": "LOW",
+                "scope": "UNCHANGED",
+                "userInteraction": "NONE",
+                "vectorString": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:L",
+                "version": "3.1"
+              },
+              "exploitabilityScore": 2.8,
+              "impactScore": 2.5,
+              "source": "security@wordfence.com",
+              "type": "Primary"
+            }
+          ],
+          "cvssMetricV40": null
+        },
+        "published": "2025-09-11T08:15:34.077",
+        "references": [
+          {
+            "source": "security@wordfence.com",
+            "tags": null,
+            "url": "https://plugins.trac.wordpress.org/browser/my-wp-translate/tags/1.1/admin/class-my-wp-translate-admin.php#L1048"
+          },
+          {
+            "source": "security@wordfence.com",
+            "tags": null,
+            "url": "https://plugins.trac.wordpress.org/browser/my-wp-translate/tags/1.1/admin/class-my-wp-translate-admin.php#L1069"
+          },
+          {
+            "source": "security@wordfence.com",
+            "tags": null,
+            "url": "https://plugins.trac.wordpress.org/browser/my-wp-translate/tags/1.1/admin/class-my-wp-translate-admin.php#L1130"
+          },
+          {
+            "source": "security@wordfence.com",
+            "tags": null,
+            "url": "https://plugins.trac.wordpress.org/browser/my-wp-translate/tags/1.1/admin/class-my-wp-translate-admin.php#L1138"
+          },
+          {
+            "source": "security@wordfence.com",
+            "tags": null,
+            "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/5bda56c3-56ad-40d7-b743-0b69512ec460?source=cve"
+          }
+        ],
+        "sourceIdentifier": "security@wordfence.com",
+        "vulnStatus": "Awaiting Analysis",
+        "weaknesses": [
+          {
+            "description": [
+              {
+                "lang": "en",
+                "value": "CWE-862"
+              }
+            ],
+            "source": "security@wordfence.com",
+            "type": "Primary"
+          }
+        ]
+      }
+    },
+    {
+      "cve": {
+        "cisaActionDue": "",
+        "cisaExploitAdd": "",
+        "cisaRequiredAction": "",
+        "cisaVulnerabilityName": "",
+        "configurations": null,
+        "cveTags": [],
+        "descriptions": [
+          {
+            "lang": "en",
+            "value": "The My WP Translate plugin for WordPress is vulnerable to unauthorized modification of data that can lead to privilege escalation due to a missing capability check on the ajax_import_strings() function in all versions up to, and including, 1.1. This makes it possible for authenticated attackers, with Subscriber-level access and above, to update arbitrary options on the WordPress site. This can be leveraged to update the default role for registration to administrator and enable user registration for attackers to gain administrative user access to a vulnerable site."
+          }
+        ],
+        "id": "CVE-2025-8425",
+        "lastModified": "2025-09-11T17:14:10.147",
+        "metrics": {
+          "cvssMetricV2": null,
+          "cvssMetricV30": null,
+          "cvssMetricV31": [
+            {
+              "cvssData": {
+                "attackComplexity": "LOW",
+                "attackVector": "NETWORK",
+                "availabilityImpact": "HIGH",
+                "baseScore": 8.8,
+                "baseSeverity": "HIGH",
+                "confidentialityImpact": "HIGH",
+                "integrityImpact": "HIGH",
+                "privilegesRequired": "LOW",
+                "scope": "UNCHANGED",
+                "userInteraction": "NONE",
+                "vectorString": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+                "version": "3.1"
+              },
+              "exploitabilityScore": 2.8,
+              "impactScore": 5.9,
+              "source": "security@wordfence.com",
+              "type": "Primary"
+            }
+          ],
+          "cvssMetricV40": null
+        },
+        "published": "2025-09-11T08:15:34.267",
+        "references": [
+          {
+            "source": "security@wordfence.com",
+            "tags": null,
+            "url": "https://plugins.trac.wordpress.org/browser/my-wp-translate/tags/1.1/admin/class-my-wp-translate-admin.php#L1116"
+          },
+          {
+            "source": "security@wordfence.com",
+            "tags": null,
+            "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/ef46b08f-455a-4c61-81ac-10af19b16980?source=cve"
+          }
+        ],
+        "sourceIdentifier": "security@wordfence.com",
+        "vulnStatus": "Awaiting Analysis",
+        "weaknesses": [
+          {
+            "description": [
+              {
+                "lang": "en",
+                "value": "CWE-862"
+              }
+            ],
+            "source": "security@wordfence.com",
+            "type": "Primary"
+          }
+        ]
+      }
+    },
+    {
+      "cve": {
+        "cisaActionDue": "",
+        "cisaExploitAdd": "",
+        "cisaRequiredAction": "",
+        "cisaVulnerabilityName": "",
+        "configurations": null,
+        "cveTags": [],
+        "descriptions": [
+          {
+            "lang": "en",
+            "value": "The Countdown Timer for Elementor plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'countdown_label' Parameter in all versions up to, and including, 1.3.9 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with Contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page."
+          }
+        ],
+        "id": "CVE-2025-8445",
+        "lastModified": "2025-09-11T17:14:10.147",
+        "metrics": {
+          "cvssMetricV2": null,
+          "cvssMetricV30": null,
+          "cvssMetricV31": [
+            {
+              "cvssData": {
+                "attackComplexity": "LOW",
+                "attackVector": "NETWORK",
+                "availabilityImpact": "NONE",
+                "baseScore": 6.4,
+                "baseSeverity": "MEDIUM",
+                "confidentialityImpact": "LOW",
+                "integrityImpact": "LOW",
+                "privilegesRequired": "LOW",
+                "scope": "CHANGED",
+                "userInteraction": "NONE",
+                "vectorString": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N",
+                "version": "3.1"
+              },
+              "exploitabilityScore": 3.1,
+              "impactScore": 2.7,
+              "source": "security@wordfence.com",
+              "type": "Primary"
+            }
+          ],
+          "cvssMetricV40": null
+        },
+        "published": "2025-09-11T08:15:34.450",
+        "references": [
+          {
+            "source": "security@wordfence.com",
+            "tags": null,
+            "url": "https://plugins.trac.wordpress.org/browser/countdown-timer-for-elementor/trunk/widgets/countdown-timer-widget.php#L513"
+          },
+          {
+            "source": "security@wordfence.com",
+            "tags": null,
+            "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/4ddcb9e7-506d-408d-812b-b95610b636f1?source=cve"
+          }
+        ],
+        "sourceIdentifier": "security@wordfence.com",
+        "vulnStatus": "Awaiting Analysis",
+        "weaknesses": [
+          {
+            "description": [
+              {
+                "lang": "en",
+                "value": "CWE-79"
+              }
+            ],
+            "source": "security@wordfence.com",
+            "type": "Primary"
+          }
+        ]
+      }
+    },
+    {
+      "cve": {
+        "cisaActionDue": "",
+        "cisaExploitAdd": "",
+        "cisaRequiredAction": "",
+        "cisaVulnerabilityName": "",
+        "configurations": null,
+        "cveTags": [],
+        "descriptions": [
+          {
+            "lang": "en",
+            "value": "The Blog Designer For Elementor – Post Slider, Post Carousel, Post Grid plugin for WordPress is vulnerable to Cross-Site Request Forgery in version 1.1.7. This is due to missing or incorrect nonce validation on the bdfe_install_activate_rswpbs_only function. This makes it possible for unauthenticated attackers to install the 'rs-wp-books-showcase' plugin via a forged request granted they can trick a site administrator into performing an action such as clicking on a link."
+          }
+        ],
+        "id": "CVE-2025-8481",
+        "lastModified": "2025-09-11T17:14:10.147",
+        "metrics": {
+          "cvssMetricV2": null,
+          "cvssMetricV30": null,
+          "cvssMetricV31": [
+            {
+              "cvssData": {
+                "attackComplexity": "LOW",
+                "attackVector": "NETWORK",
+                "availabilityImpact": "NONE",
+                "baseScore": 4.3,
+                "baseSeverity": "MEDIUM",
+                "confidentialityImpact": "NONE",
+                "integrityImpact": "LOW",
+                "privilegesRequired": "NONE",
+                "scope": "UNCHANGED",
+                "userInteraction": "REQUIRED",
+                "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:L/A:N",
+                "version": "3.1"
+              },
+              "exploitabilityScore": 2.8,
+              "impactScore": 1.4,
+              "source": "security@wordfence.com",
+              "type": "Primary"
+            }
+          ],
+          "cvssMetricV40": null
+        },
+        "published": "2025-09-11T08:15:34.637",
+        "references": [
+          {
+            "source": "security@wordfence.com",
+            "tags": null,
+            "url": "https://plugins.trac.wordpress.org/browser/blog-designer-for-elementor/tags/1.1.7/inc/import-books-from-amazon-notice/import-books-from-amazon-notice.php#L109"
+          },
+          {
+            "source": "security@wordfence.com",
+            "tags": null,
+            "url": "https://www.wordfence.com/threat-intel/vulnerabilities/id/b8f31f8e-03a0-436c-bfa3-bc41d70e8e2a?source=cve"
+          }
+        ],
+        "sourceIdentifier": "security@wordfence.com",
+        "vulnStatus": "Awaiting Analysis",
+        "weaknesses": [
+          {
+            "description": [
+              {
+                "lang": "en",
+                "value": "CWE-352"
+              }
+            ],
+            "source": "security@wordfence.com",
+            "type": "Primary"
+          }
+        ]
+      }
+    }
+  ]
+}
