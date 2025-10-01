@@ -1,7 +1,9 @@
-# CVE Updater
+# NVD Parser
 
 This tool synchronizes a local PostgreSQL database with the latest CVE (Common Vulnerabilities and Exposures) data from the [NIST NVD](https://nvd.nist.gov/).  
 It supports both one-time updates and continuous syncing to keep your database current.
+
+This project is not affiliated with or endorsed by NIST or the National Vulnerability Database.
 
 ## Database setup
 
