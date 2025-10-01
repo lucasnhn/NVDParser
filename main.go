@@ -145,18 +145,9 @@ func handleRuntimeOptions() (status *string, stayUpdated *bool, username *string
 	return status, stayUpdated, username, updateAll, updateRecent, password, port, host, dbname
 }
 
-func failingJsonParse(obj any) string {
-	result, err := json.MarshalIndent(obj, "", "  ")
-	if err != nil {
-		fmt.Println(err)
-	}
-	return string(result)
-}
-
 func printStatus(vulneravilities []cve.Vulnerability) {
 	emptyMetricInfo := make(map[string]int)
 	fullMetricInfo := make(map[string]int)
-	// listOfvulnStatus := []string{}
 
 	for _, vulnerability := range vulneravilities {
 		cve := vulnerability.CVE
