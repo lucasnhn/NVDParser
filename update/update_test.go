@@ -1,7 +1,7 @@
 package update
 
 import (
-	"nvd_parser/cve"
+	"nvdparser/cve"
 	"os"
 	"testing"
 )

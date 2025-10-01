@@ -3,7 +3,7 @@ package databaseInterface
 import (
 	"encoding/json"
 	"math/rand"
-	"nvd_parser/cve"
+	"nvdparser/cve"
 	"os"
 	"testing"
 	"time"
@@ -164,4 +164,3 @@ func getStringSetKeys(stringSet map[string]struct{}) []string {
 	}
 	return keys
 }
-

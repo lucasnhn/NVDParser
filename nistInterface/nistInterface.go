@@ -8,7 +8,7 @@ import (
 	"fmt"
 	"io"
 	"net/http"
-	"nvd_parser/cve"
+	"nvdparser/cve"
 	"os"
 	"path/filepath"
 	"strings"

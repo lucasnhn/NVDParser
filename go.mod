@@ -1,4 +1,4 @@
-module nvd_parser
+module nvdparser
 
 go 1.24.6
 

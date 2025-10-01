@@ -3,10 +3,10 @@ package update
 import (
 	"context"
 	"fmt"
-	"nvd_parser/constants"
-	"nvd_parser/cve"
-	"nvd_parser/databaseInterface"
-	"nvd_parser/nistInterface"
+	"nvdparser/constants"
+	"nvdparser/cve"
+	"nvdparser/databaseInterface"
+	"nvdparser/nistInterface"
 	"strconv"
 	"time"
 
