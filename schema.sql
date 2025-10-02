@@ -173,7 +173,7 @@ SELECT
   c.vuln_status,
 
   -- ===== Core CVSS outputs =====
-  COALESCE(v40.base_score, v31.base_score, v20.base_score)         AS base_score,
+  COALESCE(v40.base_score, v31.base_score, v20.base_score)          AS base_score,
   COALESCE(v40.base_severity, v31.base_severity, v20.base_severity) AS base_severity,
   COALESCE(v40.vector_string, v31.vector_string, v20.vector_string) AS vector_string,
 
@@ -182,14 +182,9 @@ SELECT
   COALESCE(v40.type,   v31.type,   v20.type)   AS metric_type,
 
   -- ===== Normalized base metrics =====
-  -- map v2 access_* to v3+/v4 attack_*
   COALESCE(v40.attack_vector,     v31.attack_vector,     v20.access_vector)     AS attack_vector,
   COALESCE(v40.attack_complexity, v31.attack_complexity, v20.access_complexity) AS attack_complexity,
-
-  -- v3+/v4 only; v2 has authentication instead (kept below separately)
   COALESCE(v40.privileges_required, v31.privileges_required) AS privileges_required,
-
-  -- v3+/v4 use enum values; v2 has a boolean "user_interaction_required"
   COALESCE(
     v40.user_interaction,
     v31.user_interaction,
@@ -199,20 +194,14 @@ SELECT
       ELSE NULL
     END
   ) AS user_interaction,
-
-  -- scope only exists in v3.0/3.1
   v31.scope AS scope,
-
-  -- impacts (align names)
   COALESCE(v40.vuln_availability_impact,    v31.availability_impact,    v20.availability_impact)    AS availability_impact,
   COALESCE(v40.vuln_confidentiality_impact, v31.confidentiality_impact, v20.confidentiality_impact) AS confidentiality_impact,
   COALESCE(v40.vuln_integrity_impact,       v31.integrity_impact,       v20.integrity_impact)       AS integrity_impact,
-
-  -- scores present in v3.1 and v2.0
   COALESCE(v31.exploitability_score, v20.exploitability_score) AS exploitability_score,
   COALESCE(v31.impact_score,         v20.impact_score)         AS impact_score,
 
-  -- ===== Additional v4.0 knobs (helpful for triage when present) =====
+  -- ===== Additional v4.0 knobs =====
   v40.automatable,
   v40.recovery,
   v40.safety,
@@ -239,14 +228,25 @@ SELECT
   v40.value_density,
   v40.vulnerability_response_effort,
 
-  -- ===== v2-only fields kept for completeness =====
+  -- ===== v2-only =====
   v20.authentication,
   v20.ac_insuf_info,
   v20.obtain_all_privilege,
   v20.obtain_other_privilege,
-  v20.obtain_user_privilege
+  v20.obtain_user_privilege,
+
+  -- ===== Aggregated configuration list (one extra column) =====
+  cfg.configuration_list
 
 FROM cve c
 LEFT JOIN cvss_v40 v40 USING (cve_id)
 LEFT JOIN cvss_v31 v31 USING (cve_id)
-LEFT JOIN cvss_v20 v20 USING (cve_id);
+LEFT JOIN cvss_v20 v20 USING (cve_id)
+LEFT JOIN (
+  SELECT
+    cve_id,
+    -- PG15+: DISTINCT + ORDER BY allowed; drop DISTINCT if you want duplicates
+    array_agg(DISTINCT data ORDER BY data) AS configuration_list
+  FROM cve_configuration
+  GROUP BY cve_id
+) AS cfg USING (cve_id);
