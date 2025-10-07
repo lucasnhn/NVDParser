@@ -242,11 +242,8 @@ FROM cve c
 LEFT JOIN cvss_v40 v40 USING (cve_id)
 LEFT JOIN cvss_v31 v31 USING (cve_id)
 LEFT JOIN cvss_v20 v20 USING (cve_id)
-LEFT JOIN (
-  SELECT
-    cve_id,
-    -- PG15+: DISTINCT + ORDER BY allowed; drop DISTINCT if you want duplicates
-    array_agg(DISTINCT data ORDER BY data) AS configuration_list
-  FROM cve_configuration
-  GROUP BY cve_id
-) AS cfg USING (cve_id);
+LEFT JOIN LATERAL (
+  SELECT array_agg(DISTINCT cc.data ORDER BY cc.data) AS configuration_list
+  FROM cve_configuration cc
+  WHERE cc.cve_id = c.cve_id
+) cfg ON true;
